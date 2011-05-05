@@ -1,0 +1,746 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <!--
+
+        Prologue Theme v1.18 by Hayden Hunter
+        Available from Tumblr as a Premium Theme
+        http://prologuetheme.tumblr.com
+
+    -->
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=1024, maximum-scale=1.0" />
+
+    <title>{Title}{block:SearchPage} &bull; {lang:Search results for SearchQuery} {/block:SearchPage}{block:PostSummary} &bull; {PostSummary}{/block:PostSummary}</title>
+    <meta name="description" content="{block:IndexPage}{block:Description}{MetaDescription}{/block:Description}{/block:IndexPage}{block:PermalinkPage}{block:PostSummary}{PostSummary}{/block:PostSummary}{/block:PermalinkPage}" />
+
+    <meta name="if:Inverse Colour Scheme" content="0" />
+    <meta name="color:Background" content="#ffffff" />
+    <meta name="color:Content Background" content="#ffffff" />
+    <meta name="color:Inverse Background" content="#252525" />
+    <meta name="color:Inverse Content Background" content="#252525" />
+    <meta name="image:Header" content="" />
+    <meta name="image:Background" content="" />
+
+    <meta name="if:Centered Layout" content="1" />
+    <meta name="if:Two Column Layout" content="1" />
+    <meta name="if:Fixed Positioned Sidebar" content="1" />
+    <meta name="if:Infinite Scrolling" content="1" />
+
+    <meta name="if:Serif Type" content="0" />
+    <meta name="if:Larger Type for Custom Font" content="0" />
+
+    <meta name="if:Show Avatar" content="1" />
+    <meta name="if:Show Likes" content="1" />
+    <meta name="if:Show Latest Tweet" content="1" />
+    <meta name="if:Show Share Menu" content="1" />
+    <meta name="if:Show Relative Timestamps" content="1" />
+    <meta name="if:Show Footer Links and Search" content="1" />
+    <meta name="if:Show Profile Links" content="1" />
+    <meta name="if:Show Follow Me Link" content="1" />
+    <meta name="if:Collapse Notes" content="1" />
+    <meta name="if:Show Notes" content="1" />
+    <meta name="if:Show Biography" content="1" />
+    <meta name="if:Show Audio Download Links" content="1" />
+
+    <meta name="if:Hanging Punctuation" content="1" />
+    <meta name="if:Show Rounded Corners" content="1" />
+    <meta name="if:Show Theme Credit" content="1" />
+    <meta name="if:Disable Title Fade Animation" content="0" />
+
+    <meta name="text:Google Analytics ID" content="" />
+    <meta name="text:Disqus Shortname" content="" />
+    <meta name="text:GitHub ID" content="" />
+
+    <link rel="shortcut icon" href="{Favicon}" />
+    <link rel="alternate" type="application/rss+xml" href="{RSS}" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="http://static.tumblr.com/iqfzjqj/buel3y1na/reset.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="http://static.tumblr.com/iqfzjqj/NOSlbvgqu/screen.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="http://static.tumblr.com/eeftr7g/9UHlafiui/fancybox-1.3.1.css" />
+
+    <!--[if lte IE 8]>
+        <script type="text/javascript">
+            var islteIE8 = true;
+        </script>
+
+        <link rel="stylesheet" type="text/css" media="screen" href="http://static.tumblr.com/eeftr7g/oHHlafjdk/ie8.css" />
+    <![endif]-->
+
+    <!--[if lte IE 7]>
+        <script type="text/javascript">
+            var islteIE7 = true;
+        </script>
+
+        <link rel="stylesheet" type="text/css" media="screen" href="http://static.tumblr.com/iqfzjqj/mV5lcergw/ie7.css" />
+    <![endif]-->
+
+    <script type="text/javascript" src="http://static.tumblr.com/eeftr7g/dpbl9nm0t/swfobject.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>
+    <!--script type="text/javascript" src="http://static.tumblr.com/gpln05e/ao8kyw205/jquery-1.4.2.min.js"></script-->
+    <script type="text/javascript" src="http://static.tumblr.com/iqfzjqj/MJxknworj/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="http://static.tumblr.com/eeftr7g/On4lafit3/jquery.fancybox-1.3.1.pack.js"></script>
+    <!-- Included for Safari to work with infinite scrolling -->
+    <script type="text/javascript" src="http://assets.tumblr.com/javascript/tumblelog.js"></script>
+
+    <!--script type="text/javascript" src="http://static.tumblr.com/iqfzjqj/tK0lcerlj/prologue-1.18.js"></script-->
+    <script type="text/javascript" src="http://static.tumblr.com/dbcxhwx/pL0lf8pff/prologue-1.18-admin-fix.js"></script>
+
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript">
+      google.load('search', '1', {language : 'en'});
+      google.setOnLoadCallback(function() {
+          var customSearchControl = new google.search.CustomSearchControl('010541413504069420584:gfnlu4zkb8m');
+          customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+          customSearchControl.setSearchCompleteCallback(null, onQueryComplate);
+          customSearchControl.setLinkTarget(google.search.Search.LINK_TARGET_SELF);
+
+          var options = new google.search.DrawOptions();
+          options.setSearchFormRoot('search');
+          customSearchControl.draw('cse', options);
+      }, true);
+
+      function onQueryComplate() {
+        $(".cse").show();
+        $("#tweet").hide();
+        $("#page-loading").hide();
+        $("#pagination").hide();
+        $("div").filter(function() {
+          return this.id.match(/page-\d+/);
+        }).hide();
+        $("#cse-search-keyword").html($("input.gsc-input").val());
+      }
+    </script>
+
+    <link rel="stylesheet" href="http://www.google.com/cse/style/look/default.css" type="text/css" />
+    <style type="text/css">
+    /* for google search */
+    input.gsc-search-button {
+      height: 22px;
+      padding: 0 5px;
+      font-size: 11px;
+      line-height: 20px;
+    }
+
+    input.gsc-input {
+      height: 20px;
+      border-color: #aaa;
+      border-radius: 3px;
+      font-size:12px;
+    }
+
+    .gsc-clear-button {
+      display: none;
+    }
+
+    .cse {
+      display: none;
+    }
+
+    .gs-webResult .gs-snippet {
+      font-size: 14px;
+      margin-bottom: 3px;
+      line-height: 1.2em;
+    }
+
+    .gs-webResult.gs-result .gs-title, .gs-webResult.gs-result .gs-title b {
+      font-family: Georgia, "Times New Roman", serif;
+      text-decoration: none;
+      font-size: 16px;
+      height: 1.5em;
+      color: #333;
+    }
+
+    .gs-webResult.gs-result a.gs-title:hover {
+      text-decoration: underline;
+    }
+
+    .gsc-results.gsc-webResult {
+      margin-top: 1.5em;
+    }
+
+    /* http://almaer.com/scrollbar/debug.html */
+
+    pre::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    pre::-webkit-scrollbar-button:start:decrement,
+    pre::-webkit-scrollbar-button:end:increment {
+        display: block;
+        height: 10px;
+    }
+
+    pre::-webkit-scrollbar-button:vertical:increment {
+        background-color: #fff;
+    }
+
+    pre::-webkit-scrollbar-track-piece {
+        background-color: #eee;
+        -webkit-border-radius: 3px;
+    }
+
+    pre::-webkit-scrollbar-thumb:vertical {
+        height: 50px;
+        background-color: #ccc;
+        -webkit-border-radius: 3px;
+    }
+
+    pre::-webkit-scrollbar-thumb:horizontal {
+        width: 50px;
+        background-color: #ccc;
+        -webkit-border-radius: 3px;
+    }
+
+    /* @end */
+
+    /* tumblr theme */
+    html {background-color:{block:IfNotInverseColourScheme}{color:Background}{/block:IfNotInverseColourScheme}{block:IfInverseColourScheme}{color:Inverse Background}{/block:IfInverseColourScheme};}
+
+    body {background-color:{color:Background};}
+    #title, #footer, .media a .high-res, #pagination, #page-location, .input-text, .quotation blockquote .left, .quotation blockquote .right, .tl span, .tr span, .bl span, .br span, #bg-wrapper, #page-wrapper, .media a .high-res .icon, #profile, .meta-list .share-nav, .meta-list .share.hover a, .stripped-content a span {background-color:{color:Content Background};}
+
+    body.inverse {background-color:{color:Inverse Background};}
+    .inverse #title, .inverse #footer, .inverse .media a .high-res, .inverse #pagination, .inverse #page-location, .inverse .input-text, .inverse .quotation blockquote .left, .inverse .quotation blockquote .right, .inverse .tl span, .inverse .tr span, .inverse .bl span, .inverse .br span, .inverse #bg-wrapper, .inverse #page-wrapper, .inverse .media a .high-res .icon, .inverse #profile, .inverse .meta-list .share-nav, .inverse .meta-list .share.hover a, .inverse .stripped-content a span {background-color:{color:Inverse Content Background};}
+
+    {block:IfBackgroundImage}
+    body {background-image:url({image:Background}); background-position:center top; background-repeat:repeat;}
+    {/block:IfBackgroundImage}
+    </style>
+
+    <style>
+    .content pre {
+        background-color: #F2F2F2;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        padding: 8px;
+        width: 470px;
+        overflow: auto;
+    }
+    </style>
+
+    <script type="text/javascript">
+        var currentPage = parseInt({CurrentPage});
+        var currentPageStr = {CurrentPage};
+        var totalPages = parseInt({TotalPages});
+        var totalPagesStr = {TotalPages};
+        var infiniteScrolling = {block:IfInfiniteScrolling}true{/block:IfInfiniteScrolling}{block:IfNotInfiniteScrolling}false{/block:IfNotInfiniteScrolling};
+        var tumblrUsername = '{name}';
+        {block:Twitter}
+        var twitterUsername = '{TwitterUsername}';
+        {/block:Twitter}
+        {block:IfDisqusShortname}
+        var disqusShortname = '{text:Disqus Shortname}';
+        {/block:IfDisqusShortname}
+        {block:IfGitHubID}
+        var gitHubId = '{text:GitHub ID}';
+        {/block:IfGitHubID}
+    </script>
+
+    <style type="text/css" id="customCSS">
+        {CustomCSS}
+    </style>
+</head>
+<body class="{block:IfCenteredLayout}centered{/block:IfCenteredLayout} {block:IfTwoColumnLayout}two{/block:IfTwoColumnLayout} {block:IfInverseColourScheme}inverse{/block:IfInverseColourScheme} {block:IfFixedPositionedSidebar}fixed-sidebar{/block:IfFixedPositionedSidebar} {block:IfHeaderImage}custom-header{/block:IfHeaderImage} {block:IfNotShowBiography}hide-bio{/block:IfNotShowBiography} {block:IfNotShowRoundedCorners}no-corners{/block:IfNotShowRoundedCorners} {block:IfCollapseNotes}collapse-notes{/block:IfCollapseNotes} {block:IfSerifType}serif{/block:IfSerifType} {block:IfLargerTypeForCustomFont}large-type{/block:IfLargerTypeForCustomFont} {block:IfNotShowLatestTweet}hide-twitter{/block:IfNotShowLatestTweet} {block:IfNotShowThemeCredit}hide-credit{/block:IfNotShowThemeCredit} {block:IfNotHangingPunctuation}indented-punctuation{/block:IfNotHangingPunctuation} {block:IfDisableTitleFadeAnimation}disable-title-fade{block:IfDisableTitleFadeAnimation}">
+<!-- Tumblr Theme #14093 -->
+
+    <div id="bg-wrapper"></div>
+
+    <div id="page-wrapper">
+
+        <!-- Wrapper -->
+        <div id="wrapper">
+
+            <div id="header">
+                {block:IfHeaderImage}
+                <div class="image-wrapper">
+                    <a href="/"><img src="{image:Header}" title="{Title}" alt="{Title}" /></a>
+                </div>
+                {/block:IfHeaderImage}
+
+                <h1 id="title"><a href="/">{Title}</a></h1>
+
+                {block:IfNotTwoColumnLayout}
+                {block:Description}
+                <div id="bio">{Description}</div>
+                {/block:Description}
+
+                {block:IfShowAvatar}
+                <a id="avatar" href="/" title="{Title}"><img src="{PortraitURL-96}" alt="Avatar" /></a>
+                {/block:IfShowAvatar}
+                {/block:IfNotTwoColumnLayout}
+            </div>
+
+            <div id="profile">
+                {block:IfTwoColumnLayout}
+                {block:IfShowAvatar}
+                <a id="avatar" href="/" title="{Title}"><img src="{PortraitURL-128}" alt="Avatar" /></a>
+                {/block:IfShowAvatar}
+
+                {block:Description}
+                <div id="bio">{Description}</div>
+
+                <div class="clr"></div>
+
+                {/block:Description}
+                {/block:IfTwoColumnLayout}
+
+                {block:IfShowProfileLinks}
+                <div id="profile-external">
+                    <ul class="link-list">
+                        {block:IfShowFollowMeLink}
+                        <li><a href="http://www.tumblr.com/follow/{name}"><span>{lang:Follow on Tumblr}</span></a></li>
+                        {/block:IfShowFollowMeLink}
+
+                        {block:IfGitHubID}
+                        <li><a href="http://github.com/{text:GitHub ID}"><span>Fork on GitHub</span></a></li>
+                        {/block:IfGitHubID}
+
+                        {block:AskEnabled}
+                        <li><a href="/ask"><span>{AskLabel}</span></a></li>
+                        {/block:AskEnabled}
+
+                        {block:SubmissionsEnabled}
+                        <li><a href="/submit"><span>{SubmitLabel}</span></a></li>
+                        {/block:SubmissionsEnabled}
+
+                        {block:HasPages}
+                        {block:Pages}
+                        <li><a href="{URL}"><span>{Label}</span></a></li>
+                        {/block:Pages}
+                        {/block:HasPages}
+                    </ul>
+
+                    <div class="clr"></div>
+
+                </div>
+                {/block:IfShowProfileLinks}
+
+                {block:IfShowLikes}
+                {block:IfTwoColumnLayout}
+                {block:IndexPage}
+                {block:Likes}
+                <div class="widget">
+                    <h3 class="section-title"><a href="http://www.tumblr.com/liked/by/{Name}">{lang:Likes}</a></h3>
+                    {Likes limit="5" width="200" summarize="200"}
+                </div>
+                {/block:Likes}
+                {/block:IndexPage}
+                {/block:IfTwoColumnLayout}
+                {/block:IfShowLikes}
+
+                {block:IfShowFooterLinksAndSearch}
+                <div id="footer">
+                    <div id="search">
+                        <form id="search-form" action="/search" method="get">
+                            <input id="search-field" class="input-text" type="text" value="{lang:Search}" name="q"/>
+                            <input id="search-submit" title="{lang:Search}" type="image" src="http://static.tumblr.com/eeftr7g/jrAl9k057/blank.png" />
+                        </form>
+                    </div>
+
+                    <ul id="nav" class="link-list">
+                        <li id="nav-archive"><a href="/archive"><span>{lang:Archive}</span></a></li>
+                        <li id="nav-mobile"><a href="/mobile"><span>{lang:Mobile}</span></a></li>
+                        <li id="nav-rss"><a href="{RSS}"><span>{lang:RSS}</span></a></li>
+                        <li id="nav-tumblr"><a href="http://www.tumblr.com/"><span>Tumblr</span> &hearts;</a></li>
+                    </ul>
+
+                    <div class="clr"></div>
+                </div>
+                {/block:IfShowFooterLinksAndSearch}
+            </div>
+
+            <div id="content">
+                <div id="page-type" class="strip paginated cse">
+                    <h6>{lang:Search results for SearchQuery}<span id="cse-search-keyword"></span></h6>
+                </div>
+                <div id="cse" class="cse"></div>
+
+                {block:IndexPage}
+                {block:SearchPage}
+                <div id="page-type" class="strip paginated">
+                    <h6>{lang:Search results for SearchQuery}</h6>
+                </div>
+                {/block:SearchPage}
+
+                {block:TagPage}
+                <div id="page-type" class="strip paginated">
+                    <h6>{lang:Posts tagged Tag 3}</h6>
+                </div>
+                {/block:TagPage}
+
+                <div id="pagination" class="strip">
+                    <a id="page-top" class="icon-link" href="#wrapper">&uarr; <span>Top</span></a>
+
+                    {block:PreviousPage}
+                    <a id="page-prev" class="icon-link" href="{PreviousPage}">&uarr; <span>{lang:Previous page}</span></a>
+                    {/block:PreviousPage}
+
+                    <div id="page-strip">
+                        <div id="page-location">{lang:Page CurrentPage of TotalPages 2}</div>
+
+                        <!-- <div id="page-location">Page <span id="page-current">{CurrentPage}</span> of <span id="page-total">{TotalPages}</span></div> -->
+                    </div>
+                </div>
+                {/block:IndexPage}
+
+
+                {block:IndexPage}
+                {block:Twitter}
+                <!-- Twitter -->
+                <div id="tweet" class="post quote twitter{block:SearchPage} hide{/block:SearchPage}{block:TagPage} hide{/block:TagPage}">
+                    <a class="icon"></a>
+                    <div class="body">
+                        <div class="quotation short">
+                            <span class="source"></span>
+                            <blockquote>
+                                <span class="tl"><span class="p1"></span><span class="p2"></span><span class="p3"></span><span class="p4"></span><span class="p5"></span></span><span class="tr"><span class="p1"></span><span class="p2"></span><span class="p3"></span><span class="p4"></span><span class="p5"></span></span><span class="bl"><span class="p1"></span><span class="p2"></span><span class="p3"></span><span class="p4"></span><span class="p5"></span></span><span class="br"><span class="p1"></span><span class="p2"></span><span class="p3"></span><span class="p4"></span><span class="p5"></span></span>
+
+                                <div class="quote-wrapper">
+                                    <span class="left">&ldquo;</span>
+                                    <span class="loading-string"><span class="icon"><span class="icon-inner"></span></span>Loading latest tweet</span>
+                                </div>
+
+                                <span class="right">&rdquo;</span>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="meta">
+                        <ul class="meta-list">
+                            <li class="posted"><a href="#"><span class="icon"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+                <!-- End Twitter -->
+                {/block:Twitter}
+                {/block:IndexPage}
+
+
+                <div id="page-{CurrentPage}">
+                    <!-- 23dd13dd814b508f6e967fb40905a486 -->
+
+                    {block:Posts}
+
+                    {block:Text}
+                    <!-- Text -->
+                    <div id="post-{PostID}" class="post text">
+                        <a class="icon" href="{Permalink}"></a>
+                        <div class="body">
+                            {block:Title}<h2 class="title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+                            <div class="content">
+                                {Body}
+
+                                {block:More}
+                                <p class="read-more"><a href="{Permalink}">{lang:Read more}</a></p>
+                                {/block:More}
+                            </div>
+                            <!-- End Text -->
+                            {/block:Text}
+
+
+                    {block:Photo}
+                    <!-- Photo -->
+                    <div id="post-{PostID}" class="post photo">
+                        <a class="icon" href="{Permalink}"></a>
+                        <div class="body">
+                            <div class="media">
+                                <div class="float">
+                                    {LinkOpenTag}
+                                    <img src="{PhotoURL-500}" alt="{PhotoAlt}" />
+                                    {block:HighRes}
+                                    <span title="{PhotoURL-HighRes}" class="high-res"><span class="icon"></span></span>
+                                    {/block:HighRes}
+                                    {LinkCloseTag}
+                                </div>
+                            </div>
+                            {block:Caption}
+                            <div class="content">
+                                {Caption}
+                            </div>
+                            {/block:Caption}
+                            <!-- End Photo -->
+                            {/block:Photo}
+
+
+                    {block:Photoset}
+                    <!-- Photoset -->
+                    <div id="post-{PostID}" class="post photoset">
+                        <a class="icon" href="{Permalink}"></a>
+                        <div class="body">
+                            <div class="media">
+                                <div class="float">
+                                    <div id="media-{PostID}" class="hide">
+                                        <!-- {Photoset-500} -->
+                                    </div>
+                                </div>
+                            </div>
+                            {block:Caption}
+                            <div class="content">
+                                {Caption}
+                            </div>
+                            {/block:Caption}
+                            <!-- End Photoset -->
+                            {/block:Photoset}
+
+
+                    {block:Quote}
+                    <!-- Quote -->
+                    <div id="post-{PostID}" class="post quote">
+                        <a class="icon" href="{Permalink}"></a>
+                        <div class="body">
+                            <div class="quotation {Length}">
+                                <span class="source"></span>
+                                <blockquote>
+                                    <span class="tl"><span class="p1"></span><span class="p2"></span><span class="p3"></span><span class="p4"></span><span class="p5"></span></span><span class="tr"><span class="p1"></span><span class="p2"></span><span class="p3"></span><span class="p4"></span><span class="p5"></span></span><span class="bl"><span class="p1"></span><span class="p2"></span><span class="p3"></span><span class="p4"></span><span class="p5"></span></span><span class="br"><span class="p1"></span><span class="p2"></span><span class="p3"></span><span class="p4"></span><span class="p5"></span></span>
+
+                                    <div class="quote-wrapper">
+                                        <span class="left">&ldquo;</span>
+                                        {Quote}
+                                    </div>
+                                    <span class="right">&rdquo;</span>
+                                </blockquote>
+                            </div>
+                            {block:Source}
+                            <div class="content">
+                                {Source}
+                            </div>
+                            {/block:Source}
+                            <!-- End Quote -->
+                            {/block:Quote}
+
+
+                    {block:Link}
+                    <!-- Link -->
+                    <div id="post-{PostID}" class="post link">
+                        <a class="icon" href="{Permalink}"></a>
+                        <div class="body">
+                            <h2 class="title"><a href="{URL}" {Target}><span class="string">{Name}</span>&nbsp;<span class="icon"><span class="icon-inner"></span></span></a></h2>
+                            {block:Description}
+                            <div class="content">
+                                {Description}
+                            </div>
+                            {/block:Description}
+                            <!-- End Link -->
+                            {/block:Link}
+
+
+                    {block:Chat}
+                    <!-- Chat -->
+                    <div id="post-{PostID}" class="post chat">
+                        <a class="icon" href="{Permalink}"></a>
+                        <div class="body">
+                            {block:Title}<h2 class="title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+                            <div class="content">
+                                <ul class="transcript">
+                                    {block:Lines}
+                                    <li class="{Alt}">{block:Label}<strong class="label">{Label}</strong>{/block:label} {Line}</li>
+                                    {/block:Lines}
+                                </ul>
+                                <div class="clr"></div>
+                            </div>
+                            <!-- End Chat -->
+                            {/block:Chat}
+
+
+                    {block:Audio}
+                    <!-- Audio -->
+                    <div id="post-{PostID}" class="post audio">
+                        <a class="icon" href="{Permalink}"></a>
+                        <div class="body">
+                            <div class="player{block:AlbumArt} art{/block:AlbumArt}">
+
+                                <div class="album-art-mask">
+                                    <span class="tl"><span class="p1"></span><span class="p2"></span><span class="p3"></span><span class="p4"></span><span class="p5"></span></span><span class="tr"><span class="p1"></span><span class="p2"></span><span class="p3"></span><span class="p4"></span><span class="p5"></span></span><span class="bl"><span class="p1"></span><span class="p2"></span><span class="p3"></span><span class="p4"></span><span class="p5"></span></span><span class="br"><span class="p1"></span><span class="p2"></span><span class="p3"></span><span class="p4"></span><span class="p5"></span></span>
+                                    {block:AlbumArt}<img class="album-art" src="{AlbumArtURL}" alt="Album Art" />{/block:AlbumArt}
+                                </div>
+
+                                <div class="audio-player-mask">
+                                    <span class="tl"><span class="p1"></span><span class="p2"></span><span class="p3"></span><span class="p4"></span><span class="p5"></span></span><span class="tr"><span class="p1"></span><span class="p2"></span><span class="p3"></span><span class="p4"></span><span class="p5"></span></span><span class="bl"><span class="p1"></span><span class="p2"></span><span class="p3"></span><span class="p4"></span><span class="p5"></span></span><span class="br"><span class="p1"></span><span class="p2"></span><span class="p3"></span><span class="p4"></span><span class="p5"></span></span>
+
+                                    <div id="media-{PostID}">
+                                        <!-- {AudioPlayerWhite} -->
+                                    </div>
+                                </div>
+                                <div class="player-stats">{PlayCount} {lang:Plays}{block:IfShowAudioDownloadLinks}{block:ExternalAudio} <a href="{ExternalAudioURL}"><span class="arrow">&darr;</span>&nbsp;<span class="string">{lang:Download}</span></a>{/block:ExternalAudio}{/block:IfShowAudioDownloadLinks}</div>
+                            </div>
+
+                            {block:Caption}
+                            <div class="content">
+                                {Caption}
+                            </div>
+                            {/block:Caption}
+                            <!-- End Audio -->
+                            {/block:Audio}
+
+
+                    {block:Video}
+                    <!-- Video -->
+                    <div id="post-{PostID}" class="post video">
+                        <a class="icon" href="{Permalink}"></a>
+                        <div class="body">
+                            <div class="media">
+                                <div class="float">
+                                    <div id="media-{PostID}" class="hide">
+                                        {Video-500}
+                                    </div>
+                                </div>
+                            </div>
+                            {block:Caption}
+                            <div class="content">
+                                {Caption}
+                            </div>
+                            {/block:Caption}
+                            <!-- End Video -->
+                            {/block:Video}
+
+
+                    {block:Answer}
+                    <!-- Answer -->
+                    <div id="post-{PostID}" class="post answer">
+                        <a class="icon" href="{Permalink}"></a>
+                        <div class="body">
+                            <div class="content">
+                                <p class="question">{lang:Asker asked}: {Question}</p>
+
+                                {Answer}
+                            </div>
+                            <!-- End Answer -->
+                            {/block:Answer}
+
+
+                            {block:PermalinkPage}
+
+
+                            {block:ContentSource}
+                            <div class="content source">
+                            <!-- <a href="{SourceURL}"> -->
+                                {lang:Source}: {SourceLink}
+                            <!-- </a> -->
+                            </div>
+                            {/block:ContentSource}
+
+
+                            {block:PermalinkPagination}
+                            <div class="post-pagination">
+                                {block:PreviousPost}<a href="{PreviousPost}" class="previous"><span class="arrow">&larr;</span>&nbsp;<span class="string">{lang:Previous post}</span></a>{/block:PreviousPost}
+                                {block:NextPost}<a href="{NextPost}" class="next"><span class="string">{lang:Next post}</span>&nbsp;<span class="arrow">&rarr;</span></a>{/block:NextPost}
+                            </div>
+                            {/block:PermalinkPagination}
+
+                            {block:IfShowNotes}
+                            {block:PostNotes}
+                            <div id="notes">
+                                {block:IfCollapseNotes}
+                                <h3 class="section-title">{NoteCountWithLabel}<span class="toggle-wrapper"><a id="toggle-notes" class="toggle"><span class="icon"></span><span class="string toggle-show">{lang:Show}</span><span class="string toggle-hide">Hide</span></a></span></h3>
+                                {/block:IfCollapseNotes}
+                                {block:IfNotCollapseNotes}
+                                <h3 class="section-title">{NoteCountWithLabel}</h3>
+                                {/block:IfNotCollapseNotes}
+                                {PostNotes}
+                            </div>
+                            {/block:PostNotes}
+                            {/block:IfShowNotes}
+
+                            {block:IfDisqusShortname}
+                            <div id="comments">
+                                <div id="disqus_thread"></div>
+                                <script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+                                <noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+                            </div>
+                            {/block:IfDisqusShortname}
+                            {/block:PermalinkPage}
+                        </div>
+
+                        {block:Date}
+                        <div class="meta">
+                            <ul class="meta-list">
+                                <li class="posted{block:RebloggedFrom} reblogged{/block:RebloggedFrom}"><a href="{permalink}" title="{DayOfWeek} {DayOfMonth}{DayOfMonthSuffix} {Month} {ShortYear} at {12Hour}:{Minutes}{AmPm}"><span class="icon"></span> {block:IfShowRelativeTimestamps}{TimeAgo}{/block:IfShowRelativeTimestamps}{block:IfNotShowRelativeTimestamps}{DayOfMonth} {ShortMonth} {ShortYear}{/block:IfNotShowRelativeTimestamps}</a></li>
+                                {block:IfShowNotes}
+                                {block:NoteCount}
+                                <li class="notes active"><a href="{permalink}#notes"><span class="icon"></span>{NoteCountWithLabel}</a></li>
+                                {/block:NoteCount}
+                                {/block:IfShowNotes}
+
+                                {block:IfDisqusShortname}
+                                <li class="comments"><a class="dsq-comment-count" href="{Permalink}#disqus_thread"><span class="icon"></span>Comments</a></li>
+                                {/block:IfDisqusShortname}
+
+                                {block:IfShowShareMenu}
+                                <li class="share">
+                                    <a><span class="icon"></span>{block:English}Share{/block:English}{block:NotEnglish}{lang:Share this}{/block:NotEnglish}</a>
+
+                                    <div class="share-nav share-nav-preload">
+                                        <input class="short-url input-text" type="text" value="{ShortURL}" />
+
+                                        <div class="share-buttons">
+
+                                            <a href="http://twitter.com/share" class="twitter-share-button" data-url="{ShortURL}" data-text="{block:PostSummary}{PostSummary}{/block:PostSummary}" data-count="none" {block:German}data-lang="de"{/block:German}{block:French}data-lang="fr"{/block:French}{block:Japanese}data-lang="ja"{/block:Japanese}>Tweet</a>
+
+                                            <iframe src="http://www.facebook.com/plugins/like.php?href={Permalink}&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px; height:21px;" allowTransparency="true"></iframe>
+                                        </div>
+                                    </div>
+
+                                </li>
+                                {/block:IfShowShareMenu}
+
+                                {block:HasTags}
+                                <li class="tags">
+                                    <ul class="tag-list">
+                                        {block:Tags}<li><a href="{TagURL}">{Tag}</a></li>{/block:Tags}
+                                    </ul>
+                                </li>
+                                {/block:HasTags}
+
+                            </ul>
+
+                            <div class="clr"></div>
+                        </div>
+                        {/block:Date}
+
+                        <div class="clr"></div>
+                    </div>
+
+                    {/block:Posts}
+
+                    <!--/ End 23dd13dd814b508f6e967fb40905a486 -->
+                </div>
+                <!--/ End page -->
+
+
+                {block:Pagination}
+                {block:NextPage}
+                <div id="page-loading" class="strip">
+                    <a id="page-next" class="icon-link" href="{NextPage}">&darr; <span>{lang:Next page}</span></a>
+                    <span class="error-string">Something went wrong, <a id="new-page-link" href="#">try loading again?</a></span>
+                    <span class="loading-string"><span class="icon"><span class="icon-inner"></span></span>{block:English}Loading more posts{/block:English}{block:NotEnglish}{lang:Loading}{/block:NotEnglish}</span>
+                </div>
+                {/block:NextPage}
+                {/block:Pagination}
+
+            </div>
+            <!-- End Content -->
+            <div class="clr"></div>
+        </div>
+        <!-- End Wrapper -->
+
+    </div>
+
+    {block:IfGoogleAnalyticsID}
+    <script type="text/javascript">var gaJsHost=(("https:"==document.location.protocol)?"https://ssl.":"http://www.");document.write(unescape("%3Cscript src='"+gaJsHost+"google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script><script type="text/javascript">try{var pageTracker=_gat._getTracker("{text:Google Analytics ID}");pageTracker._trackPageview()}catch(err){}</script>
+    {block:IfGoogleAnalyticsID}
+
+    <!--
+        This Tumblr Theme and all of its CSS, Javascript,
+        and media assets are subject to Tumblr's Terms of Service:
+
+        http://www.tumblr.com/terms_of_service
+    -->
+</body>
+</html>
+
