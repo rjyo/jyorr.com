@@ -1,0 +1,130 @@
+pre.vim_block {
+  font-size: 12px;
+  font-family: Menlo, "Andale Mono", "Lucida Console", "Courier New", monospace;
+  color: #dcdccc; background-color: #3f3f3f;
+}
+.vim_block .Repeat { color: #ffd7a7; font-weight: bold; }
+.vim_block .Error { color: #e37170; background-color: #3d3535; }
+.vim_block .Exception { color: #c3bf9f; font-weight: bold; }
+.vim_block .Operator { color: #f0efd0; }
+.vim_block .Conditional { color: #f0dfaf; font-weight: bold; }
+.vim_block .Structure { color: #efefaf; font-weight: bold; }
+.vim_block .Statement { color: #e3ceab; }
+.vim_block .Include { color: #dfaf8f; font-weight: bold; }
+.vim_block .Function { color: #efef8f; }
+.vim_block .Number { color: #8cd0d3; }
+.vim_block .String, .vim_block a, .vim_block a:hover { color: #cc9393; text-decoration: none; }
+.vim_block .Comment { color: #7f9f7f; font-style: italic; }
+
+/* http://almaer.com/scrollbar/debug.html */
+
+pre.vim_block::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+pre.vim_block::-webkit-scrollbar-button:start:decrement,
+pre.vim_block::-webkit-scrollbar-button:end:increment {
+    display: block;
+    height: 10px;
+}
+
+pre.vim_block::-webkit-scrollbar-button:vertical:increment {
+    background-color: #fff;
+}
+
+pre.vim_block::-webkit-scrollbar-track-piece {
+    background-color: #666;
+    -webkit-border-radius: 3px;
+}
+
+pre.vim_block::-webkit-scrollbar-thumb:vertical {
+    height: 50px;
+    background-color: #333;
+    -webkit-border-radius: 3px;
+}
+
+pre.vim_block::-webkit-scrollbar-thumb:horizontal {
+    width: 50px;
+    background-color: #333;
+    -webkit-border-radius: 3px;
+}
+
+/* @end */
+
+/* for google search */
+input.gsc-search-button {
+  height: 22px;
+  padding: 0 5px;
+  font-size: 11px;
+  line-height: 20px;
+  color: #333;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  background-color: #EEE;
+}
+
+input.gsc-search-button:hover {
+  background-color: #666;
+  color: white;
+  text-shadow: none;
+}
+
+input.gsc-input {
+  height: 20px;
+  border-color: #aaa;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  font-size:12px;
+}
+
+.gsc-clear-button {
+  display: none;
+}
+
+.cse {
+  display: none;
+}
+
+.gs-webResult .gs-snippet {
+  font-size: 14px;
+  margin-bottom: 3px;
+  line-height: 1.2em;
+}
+
+.gs-webResult.gs-result .gs-title, .gs-webResult.gs-result .gs-title b {
+  font-family: Georgia, "Times New Roman", serif;
+  text-decoration: none;
+  font-size: 18px;
+  height: 1.4em;
+  color: #333;
+}
+
+.gs-webResult.gs-result a.gs-title:hover {
+  text-decoration: underline;
+}
+
+.gsc-results.gsc-webResult {
+  margin-top: 1.5em;
+}
+
+.content pre {
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    padding: 8px;
+    width: 468px;
+    overflow: auto;
+}
+
+/* overwriting default settings */
+
+body {
+  font-size: 12px;
+}
+
+.post .content {
+  padding-right: 20px;
+}
