@@ -3,30 +3,32 @@ pre.vim_block {
   font-family: Menlo, "Andale Mono", "Lucida Console", "Courier New", monospace;
   color: #dcdccc; background-color: #3f3f3f;
 }
-.vim_block .Repeat { color: #ffd7a7; font-weight: bold; }
-.vim_block .Error { color: #e37170; background-color: #3d3535; }
-.vim_block .Exception { color: #c3bf9f; font-weight: bold; }
-.vim_block .Operator { color: #f0efd0; }
+.vim_block .Repeat      { color: #ffd7a7; font-weight: bold; }
+.vim_block .Error       { color: #e37170; background-color: #3d3535; }
+.vim_block .Exception   { color: #c3bf9f; font-weight: bold; }
+.vim_block .Operator    { color: #f0efd0; }
 .vim_block .Conditional { color: #f0dfaf; font-weight: bold; }
-.vim_block .Structure { color: #efefaf; font-weight: bold; }
-.vim_block .Statement { color: #e3ceab; }
-.vim_block .Include { color: #dfaf8f; font-weight: bold; }
-.vim_block .Function { color: #efef8f; }
-.vim_block .Number { color: #8cd0d3; }
-.vim_block .String, .vim_block a, .vim_block a:hover { color: #cc9393; text-decoration: none; }
-.vim_block .Comment { color: #7f9f7f; font-style: italic; }
+.vim_block .Structure   { color: #efefaf; font-weight: bold; }
+.vim_block .Statement   { color: #e3ceab; }
+.vim_block .Include     { color: #dfaf8f; font-weight: bold; }
+.vim_block .Function    { color: #efef8f; }
+.vim_block .Number      { color: #8cd0d3; }
+.vim_block .String,
+.vim_block a,
+.vim_block a:hover      { color: #cc9393; text-decoration: none; }
+.vim_block .Comment     { color: #7f9f7f; font-style: italic; }
 
 /* http://almaer.com/scrollbar/debug.html */
 
 pre.vim_block::-webkit-scrollbar {
-    width: 6px;
+    width : 6px;
     height: 6px;
 }
 
 pre.vim_block::-webkit-scrollbar-button:start:decrement,
 pre.vim_block::-webkit-scrollbar-button:end:increment {
     display: block;
-    height: 10px;
+    height : 10px;
 }
 
 pre.vim_block::-webkit-scrollbar-button:vertical:increment {
@@ -111,12 +113,12 @@ input.gsc-input {
 }
 
 .content pre {
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    padding: 8px;
-    width: 468px;
-    overflow: auto;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  padding: 8px;
+  width: 468px;
+  overflow: auto;
 }
 
 /* overwriting default settings */
