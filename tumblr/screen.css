@@ -130,3 +130,9 @@ body {
 .post .content {
   padding-right: 20px;
 }
+
+.content img {
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+}
