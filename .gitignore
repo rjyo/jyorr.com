@@ -1,1 +1,7 @@
-_site
+.DS_Store
+pids
+logs
+nohup.out
+dump
+.sass-cache
+node_modules

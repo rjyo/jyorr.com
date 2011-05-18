@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<!--            __         __   __                             
+<!--            __         __   __
 .---.-.-----.--|  |.--.--.|  |_|  |.----. .----.-----.--------.
 |  _  |     |  _  ||  |  ||   _|  ||   _|_|  __|  _  |        |
 |___._|__|__|_____||___  ||____|__||__||__|____|_____|__|__|__|
@@ -9,115 +9,115 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<title>{Title}{block:PostTitle} - {PostTitle}{/block:PostTitle}{block:PostSummary} - {PostSummary}{/block:PostSummary}</title>
-	
-	<link rel="shortcut icon" href="{Favicon}" />
-	<link rel="alternate" type="application/rss+xml" href="{RSS}" />
-	{block:Description}
-	<meta name="description" content="{MetaDescription}" />
-	{/block:Description}
-		
-	<!-- Jquery -->
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-	
-	<!-- Jquery Fancybox -->
-	<script type="text/javascript" src="http://static.tumblr.com/z7lhmdl/Sgqkzocgr/jquery.mousewheel-3.0.2.pack.js"></script>
-	<script type="text/javascript" src="http://static.tumblr.com/z7lhmdl/C82kzochp/jquery.fancybox-1.3.0.pack.js"></script>
-	<link rel="stylesheet" type="text/css" href="http://static.tumblr.com/z7lhmdl/FOBkzocyp/jquery.fancybox-1.3.0.css" media="screen" />
-	<script type="text/javascript">
-		$(document).ready(function() {
-			
-			$(".zoombox").fancybox({
-				'scrolling'			: 'no',
-				'titlePosition'		: 'inside',
-				'transitionIn'		: 'elastic',
-		        'autoScale'     	: false,
-				'transitionOut'		: 'none',
-				'titleShow'			: false
-			});
-			
-			$("a[href$=.jpg],a[href$=.png],a[href$=.gif]").fancybox();
-			
-		});
-	</script>	
-	
-	<!--
-	Widescreen YouTube Embeds by Matthew Buchanan & Hayden Hunter
-	http://matthewbuchanan.name/451892574
-	http://blog.haydenhunter.me
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>{Title}{block:PostTitle} - {PostTitle}{/block:PostTitle}{block:PostSummary} - {PostSummary}{/block:PostSummary}</title>
 
-	Released under a Creative Commons attribution license:
-	http://creativecommons.org/licenses/by/3.0/nz/
-	-->
-	
-	<script type="text/javascript">
+  <link rel="shortcut icon" href="{Favicon}" />
+  <link rel="alternate" type="application/rss+xml" href="{RSS}" />
+  {block:Description}
+  <meta name="description" content="{MetaDescription}" />
+  {/block:Description}
+
+  <!-- Jquery -->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+  <!-- Jquery Fancybox -->
+  <script type="text/javascript" src="http://static.tumblr.com/z7lhmdl/Sgqkzocgr/jquery.mousewheel-3.0.2.pack.js"></script>
+  <script type="text/javascript" src="http://static.tumblr.com/z7lhmdl/C82kzochp/jquery.fancybox-1.3.0.pack.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://static.tumblr.com/z7lhmdl/FOBkzocyp/jquery.fancybox-1.3.0.css" media="screen" />
+  <script type="text/javascript">
+    $(document).ready(function() {
+
+      $(".zoombox").fancybox({
+        'scrolling'     : 'no',
+        'titlePosition' : 'inside',
+        'transitionIn'  : 'elastic',
+        'autoScale'     : false,
+        'transitionOut' : 'none',
+        'titleShow'     : false
+      });
+
+      $("a[href$=.jpg],a[href$=.png],a[href$=.gif]").fancybox();
+
+    });
+  </script>
+
+  <!--
+  Widescreen YouTube Embeds by Matthew Buchanan & Hayden Hunter
+  http://matthewbuchanan.name/451892574
+  http://blog.haydenhunter.me
+
+  Released under a Creative Commons attribution license:
+  http://creativecommons.org/licenses/by/3.0/nz/
+  -->
+
+  <script type="text/javascript">
 $(function() {
-	$("object").each(function () {
-		if ($(this).find("embed[src^='http://www.youtube.com']").length > 0) {
-			// Identify and hide embed(s)
-			var parent = $(this).parent();
-			parent.css("visibility","hidden");
-			var youtubeCode = parent.html();
-			var params = "";
-			if (youtubeCode.toLowerCase().indexOf("<param") == -1) {
-				// IE doesn't return params with html(), so…
-				$("param", this).each(function () {
-					params += $(this).get(0).outerHTML;
-				});
-			}
-			// Set colours in control bar to match page background
-			var oldOpts = /rel=0/g;
-			var newOpts = "rel=0&amp;color1=0xdadddd&amp;color2=0xdadddd";
-			youtubeCode = youtubeCode.replace(oldOpts, newOpts);
-			if (params != "") {
-				params = params.replace(oldOpts, newOpts);
-				youtubeCode = youtubeCode.replace(/<embed/i, params + "<embed");
-			}
-			// Extract YouTube ID and calculate ideal height
-			var youtubeIDParam = $(this).find("embed").attr("src");
-			var youtubeIDPattern = /\/v\/([0-9A-Za-z-_]*)/;
-			var youtubeID = youtubeIDParam.match(youtubeIDPattern);
-			var youtubeHeight = Math.floor(parent.find("object").width() * 0.75 + 25);
-			var youtubeHeightWide = Math.floor(parent.find("object").width() * 0.5625 + 25);
-			// Test for widescreen aspect ratio
-			$.getJSON("http://gdata.youtube.com/feeds/api/videos/" + youtubeID[1] + "?v=2&alt=json-in-script&callback=?", function (data) {
-				oldOpts = /height="?([0-9]*)"?/g;
-				if (data.entry.media$group.yt$aspectRatio != null) {
-					newOpts = 'height="' + youtubeHeightWide + '"';
-				} else {
-					newOpts = 'height="' + youtubeHeight + '"';
-				}
-				youtubeCode = youtubeCode.replace(oldOpts, newOpts);
-				if (params != "") {
-					params = params.replace(oldOpts, newOpts);
-					youtubeCode = youtubeCode.replace(/<embed/i, params + "<embed");
-				}
-				// Replace YouTube embed with new code
-				parent.html(youtubeCode).css("visibility","visible");
-			});
-		}
-	});
+  $("object").each(function () {
+    if ($(this).find("embed[src^='http://www.youtube.com']").length > 0) {
+      // Identify and hide embed(s)
+      var parent = $(this).parent();
+      parent.css("visibility","hidden");
+      var youtubeCode = parent.html();
+      var params = "";
+      if (youtubeCode.toLowerCase().indexOf("<param") == -1) {
+        // IE doesn't return params with html(), so…
+        $("param", this).each(function () {
+          params += $(this).get(0).outerHTML;
+        });
+      }
+      // Set colours in control bar to match page background
+      var oldOpts = /rel=0/g;
+      var newOpts = "rel=0&amp;color1=0xdadddd&amp;color2=0xdadddd";
+      youtubeCode = youtubeCode.replace(oldOpts, newOpts);
+      if (params != "") {
+        params = params.replace(oldOpts, newOpts);
+        youtubeCode = youtubeCode.replace(/<embed/i, params + "<embed");
+      }
+      // Extract YouTube ID and calculate ideal height
+      var youtubeIDParam = $(this).find("embed").attr("src");
+      var youtubeIDPattern = /\/v\/([0-9A-Za-z-_]*)/;
+      var youtubeID = youtubeIDParam.match(youtubeIDPattern);
+      var youtubeHeight = Math.floor(parent.find("object").width() * 0.75 + 25);
+      var youtubeHeightWide = Math.floor(parent.find("object").width() * 0.5625 + 25);
+      // Test for widescreen aspect ratio
+      $.getJSON("http://gdata.youtube.com/feeds/api/videos/" + youtubeID[1] + "?v=2&alt=json-in-script&callback=?", function (data) {
+        oldOpts = /height="?([0-9]*)"?/g;
+        if (data.entry.media$group.yt$aspectRatio != null) {
+          newOpts = 'height="' + youtubeHeightWide + '"';
+        } else {
+          newOpts = 'height="' + youtubeHeight + '"';
+        }
+        youtubeCode = youtubeCode.replace(oldOpts, newOpts);
+        if (params != "") {
+          params = params.replace(oldOpts, newOpts);
+          youtubeCode = youtubeCode.replace(/<embed/i, params + "<embed");
+        }
+        // Replace YouTube embed with new code
+        parent.html(youtubeCode).css("visibility","visible");
+      });
+    }
+  });
 });
 </script>
 
-	
 
-	<meta name="text:Disqus Username" content=""/>
-	<meta name="text:Twitter Username" content=""/>
-	<meta name="text:Flickr Username" content=""/>
-	<meta name="text:Custom Link 1 Title" content=""/>
-	<meta name="text:Custom Link 1" content=""/>
-	<meta name="text:Custom Link 2 Title" content=""/>
-	<meta name="text:Custom Link 2" content=""/>
-	<meta name="text:Custom Link 3 Title" content=""/>
-	<meta name="text:Custom Link 3" content=""/>
-	<meta name="text:Custom Link 4 Title" content=""/>
-	<meta name="text:Custom Link 4" content=""/>
-	<meta name="image:300pxPortrait" content=""/>
-	
 
-	<style type="text/css" media="screen">
+  <meta name="text:Disqus Username" content=""/>
+  <meta name="text:Twitter Username" content=""/>
+  <meta name="text:Flickr Username" content=""/>
+  <meta name="text:Custom Link 1 Title" content=""/>
+  <meta name="text:Custom Link 1" content=""/>
+  <meta name="text:Custom Link 2 Title" content=""/>
+  <meta name="text:Custom Link 2" content=""/>
+  <meta name="text:Custom Link 3 Title" content=""/>
+  <meta name="text:Custom Link 3" content=""/>
+  <meta name="text:Custom Link 4 Title" content=""/>
+  <meta name="text:Custom Link 4" content=""/>
+  <meta name="image:300pxPortrait" content=""/>
+
+
+  <style type="text/css" media="screen">
     /* ==================== */
     /* = The 1Kb CSS Grid = */
     /* ==================== */
@@ -263,7 +263,7 @@ $(function() {
         -moz-border-radius: 5px;
         border-radius: 5px;
         font-family: "Courier New", Courier, monospace;
-	overflow: auto;
+  overflow: auto;
     }
     h1 {
         font-size: 32px;
@@ -509,28 +509,28 @@ $(function() {
     }
     .wholeimage:hover > .zoomoverlay {    background: url(http://static.tumblr.com/z7lhmdl/tPFkzy1ni/zoom.png) no-repeat }
     .wholeimage {    background: #fff }
-	
-	{CustomCSS}
-	
 
-	</style>
-	
-		<!--[if lte IE 7]>
-		<style type="text/css">
-		
-		.twitter ul {
-		margin-left:0px;
-		padding-left:0px;
-		}
-		
-		.bottompanel li, .bottompanel ul {
-		padding-left: 0px !important;
-		list-style: none;
-		margin-left: 0px;
-		}
-		
-		</style>
-		<![endif]--> 
+  {CustomCSS}
+
+
+  </style>
+
+    <!--[if lte IE 7]>
+    <style type="text/css">
+
+    .twitter ul {
+    margin-left:0px;
+    padding-left:0px;
+    }
+
+    .bottompanel li, .bottompanel ul {
+    padding-left: 0px !important;
+    list-style: none;
+    margin-left: 0px;
+    }
+
+    </style>
+    <![endif]-->
 
 </head>
 
@@ -539,204 +539,204 @@ $(function() {
 
 <div class="row">
 
-	<div class="column grid_4">
-	
-		<div class="shadow">
+  <div class="column grid_4">
 
-			<div class="lightpanel roundedbottom roundedtop masthead">
-			<h1><a class="roundedbottom roundedtop" href="/">{Title}</a></h1>
-			</div>
-			
-		</div>
-	
-		<div class="shadow">
-		
+    <div class="shadow">
+
+      <div class="lightpanel roundedbottom roundedtop masthead">
+      <h1><a class="roundedbottom roundedtop" href="/">{Title}</a></h1>
+      </div>
+
+    </div>
+
+    <div class="shadow">
+
 {block:If300pxPortraitImage}
         <img class="roundedtop portrait" src="{image:300pxPortrait}" />
 
-			<div class="lightpanel">
-			<div><p>{description}</p></div>
-			</div>
+      <div class="lightpanel">
+      <div><p>{description}</p></div>
+      </div>
 {/block:If300pxPortraitImage}
 
 
 {block:IfNot300pxPortraitImage}
-			<div class="lightpanel roundedtop">
-			<div><p>{description}</p></div>
-			</div>
+      <div class="lightpanel roundedtop">
+      <div><p>{description}</p></div>
+      </div>
 {/block:IfNot300pxPortraitImage}
 
-			<div class="lightpanel nav">
-			<a class="nav" href="/">{lang:Home}</a>
-			</div>
+      <div class="lightpanel nav">
+      <a class="nav" href="/">{lang:Home}</a>
+      </div>
 
 {block:HasPages}
 {block:Pages}
-			<div class="lightpanel nav">
-			<a class="nav" href="{URL}">{Label}</a>
-			</div>
+      <div class="lightpanel nav">
+      <a class="nav" href="{URL}">{Label}</a>
+      </div>
 {/block:Pages}
 {/block:HasPages}
 
-			<div class="lightpanel nav">
-			<a class="nav" href="/archive">{lang:Archive}</a>
-			</div>
-			
-			<div class="lightpanel nav">
-			<a class="nav" href="{RSS}">{lang:Subscribe} ({lang:RSS})</a>
-			</div>
-			
-			{block:AskEnabled} 
-			<div class="lightpanel nav">
-			<a class="nav" href="/ask">{AskLabel}</a>
-			</div>			
-			{/block:AskEnabled}
-			
-			{block:SubmissionsEnabled}
-			<div class="lightpanel nav">
-			<a class="nav" href="/submit">{SubmitLabel}</a>
-			</div>						
-			{/block:SubmissionsEnabled}
-			
-			<div class="lightpanel nav">
-			<a class="nav" href="/random">{lang:Random post}</a>
-			</div>
+      <div class="lightpanel nav">
+      <a class="nav" href="/archive">{lang:Archive}</a>
+      </div>
 
-			{block:IfFlickrUsername}
-			<div class="lightpanel nav">
-			<a class="nav" href="http://www.flickr.com/photos/{text:Flickr Username}">Flickr</a>
-			</div>
-			{/block:IfFlickrUsername}
-			
+      <div class="lightpanel nav">
+      <a class="nav" href="{RSS}">{lang:Subscribe} ({lang:RSS})</a>
+      </div>
 
-			{block:IfTwitterUsername}
-			<div class="lightpanel nav">
-			<a class="nav" href="http://www.twitter.com/{text:Twitter Username}">Twitter</a>
-			</div>
+      {block:AskEnabled}
+      <div class="lightpanel nav">
+      <a class="nav" href="/ask">{AskLabel}</a>
+      </div>
+      {/block:AskEnabled}
 
-			<div class="lightpanel twitter">
-			<ul id="twitter_update_list"></ul>
-			</div>
+      {block:SubmissionsEnabled}
+      <div class="lightpanel nav">
+      <a class="nav" href="/submit">{SubmitLabel}</a>
+      </div>
+      {/block:SubmissionsEnabled}
 
-			{/block:IfTwitterUsername}
-			
-			
-			{block:IfCustomLink1}
-			<div class="lightpanel nav">
-			<a class="nav" href="{text:Custom Link 1}">{text:Custom Link 1 Title}</a>
-			</div>
-			{/block:IfCustomLink1}
+      <div class="lightpanel nav">
+      <a class="nav" href="/random">{lang:Random post}</a>
+      </div>
 
-			{block:IfCustomLink2}
-			<div class="lightpanel nav">
-			<a class="nav" href="{text:Custom Link 2}">{text:Custom Link 2 Title}</a>
-			</div>
-			{/block:IfCustomLink2}
+      {block:IfFlickrUsername}
+      <div class="lightpanel nav">
+      <a class="nav" href="http://www.flickr.com/photos/{text:Flickr Username}">Flickr</a>
+      </div>
+      {/block:IfFlickrUsername}
 
-			{block:IfCustomLink3}
-			<div class="lightpanel nav">
-			<a class="nav" href="{text:Custom Link 3}">{text:Custom Link 3 Title}</a>
-			</div>
-			{/block:IfCustomLink3}
 
-			{block:IfCustomLink4}
-			<div class="lightpanel nav">
-			<a class="nav" href="{text:Custom Link 4}">{text:Custom Link 4 Title}</a>
-			</div>
-			{/block:IfCustomLink4}
+      {block:IfTwitterUsername}
+      <div class="lightpanel nav">
+      <a class="nav" href="http://www.twitter.com/{text:Twitter Username}">Twitter</a>
+      </div>
 
-			
-			<!-- Please do not remove credit. Thanks :) -->
-			<div class="bottompanel roundedbottom">
-			<p><a href="http://www.tumblr.com/theme/7285/" target="_blank">Catching Elephant</a> is a theme by <a href="http://www.catchingzebra.com/" target="_blank">Andy Taylor</a></p>
-			</div>
-			
-		</div>
-			
-			<div class="search">
-			<form action="/search" method="get">
-		    <div class="submit"><input type="submit" value="{lang:Search}"/></div>
-		    <div class="input"><input onfocus="this.value=''" type="text" value="{lang:Search}. Then hit enter." name="q"/></div>
-			</form>
-			</div>
-			
-			
-			
-	</div>
+      <div class="lightpanel twitter">
+      <ul id="twitter_update_list"></ul>
+      </div>
 
-	<div class="column grid_1">
-	<p>&nbsp;</p>
-	</div>
+      {/block:IfTwitterUsername}
 
-	<div class="column grid_7">
 
-	{block:Posts}
-	
-	
-	
-		{block:Answer}
-			
-		<div class="shadow">
+      {block:IfCustomLink1}
+      <div class="lightpanel nav">
+      <a class="nav" href="{text:Custom Link 1}">{text:Custom Link 1 Title}</a>
+      </div>
+      {/block:IfCustomLink1}
 
-			<div class="lightpanel roundedtop notopborder">
-			
-			<div class="asker roundedtop">
-			<div class="askerportrait"><img src="{AskerPortraitURL-40}" width="40px" height="40px"/></div> <div class="askername">{lang:Asker asked}</div>
-			</div>
-			
-			<div class="triangle"></div>
-			
-			<div class="question">
-			{Question}
-			</div>
+      {block:IfCustomLink2}
+      <div class="lightpanel nav">
+      <a class="nav" href="{text:Custom Link 2}">{text:Custom Link 2 Title}</a>
+      </div>
+      {/block:IfCustomLink2}
 
-			<div class="textpostbody">
-			{Answer}
-			</div>
-			</div>
-		
-			<div class="bottompanel roundedbottom">
-			
-			<ul class="bottomlist">		
-				{block:RebloggedFrom}
-				<div class="reblogged">
+      {block:IfCustomLink3}
+      <div class="lightpanel nav">
+      <a class="nav" href="{text:Custom Link 3}">{text:Custom Link 3 Title}</a>
+      </div>
+      {/block:IfCustomLink3}
+
+      {block:IfCustomLink4}
+      <div class="lightpanel nav">
+      <a class="nav" href="{text:Custom Link 4}">{text:Custom Link 4 Title}</a>
+      </div>
+      {/block:IfCustomLink4}
+
+
+      <!-- Please do not remove credit. Thanks :) -->
+      <div class="bottompanel roundedbottom">
+      <p><a href="http://www.tumblr.com/theme/7285/" target="_blank">Catching Elephant</a> is a theme by <a href="http://www.catchingzebra.com/" target="_blank">Andy Taylor</a></p>
+      </div>
+
+    </div>
+
+      <div class="search">
+      <form action="/search" method="get">
+        <div class="submit"><input type="submit" value="{lang:Search}"/></div>
+        <div class="input"><input onfocus="this.value=''" type="text" value="{lang:Search}. Then hit enter." name="q"/></div>
+      </form>
+      </div>
+
+
+
+  </div>
+
+  <div class="column grid_1">
+  <p>&nbsp;</p>
+  </div>
+
+  <div class="column grid_7">
+
+  {block:Posts}
+
+
+
+    {block:Answer}
+
+    <div class="shadow">
+
+      <div class="lightpanel roundedtop notopborder">
+
+      <div class="asker roundedtop">
+      <div class="askerportrait"><img src="{AskerPortraitURL-40}" width="40px" height="40px"/></div> <div class="askername">{lang:Asker asked}</div>
+      </div>
+
+      <div class="triangle"></div>
+
+      <div class="question">
+      {Question}
+      </div>
+
+      <div class="textpostbody">
+      {Answer}
+      </div>
+      </div>
+
+      <div class="bottompanel roundedbottom">
+
+      <ul class="bottomlist">
+        {block:RebloggedFrom}
+        <div class="reblogged">
                     {block:RebloggedFromReblog}<li><a href="{ReblogRootURL}">&crarr; {lang:Originally from ReblogRootName}</a></li>{/block:RebloggedFromReblog}
-    				<li><a href="{ReblogParentURL}">&crarr; {lang:Reblogged from ReblogParentName}</a></li>
-				</div>
-				{/block:RebloggedFrom}
-				
-				{block:HasTags}
-				<div class="reblogged">
-				{block:Tags} 
-				<li><a href="{TagURL}">#&nbsp;{Tag}</a></li>
-				{/block:Tags}
-				</div>
-				{/block:HasTags}
-				
-				<li><a href="{permalink}">&infin; {lang:Permalink}</a></li>
-				<li><a href="{permalink}">{lang:Posted TimeAgo}</a></li>
-				<li><a href="http://twitter.com/home?status={block:PostSummary}{PostSummary} - {/block:PostSummary}{ShortURL}">{lang:Tweet this}</a></li>
-				{block:NoteCount}
-				<li><a href="{permalink}">{NoteCountWithLabel}</a></li>
-				{/block:NoteCount}
-				{block:IfDisqusUsername}
-				<li><a class="dsq-comment-count" href="{Permalink}#disqus_thread">{lang:Comment}</a></li>
-				{/block:IfDisqusUsername}
-			</ul>
-			
-			</div>
-			
-		</div>
-		
-		{block:PostNotes} 
-		<div class="shadow">
-			<div class="lightpanel roundedbottom roundedtop notes">
-			<p>{PostNotes}</p>
-			</div>
-		</div>
-		{/block:PostNotes}
-		
-		{/block:Answer}
+            <li><a href="{ReblogParentURL}">&crarr; {lang:Reblogged from ReblogParentName}</a></li>
+        </div>
+        {/block:RebloggedFrom}
+
+        {block:HasTags}
+        <div class="reblogged">
+        {block:Tags}
+        <li><a href="{TagURL}">#&nbsp;{Tag}</a></li>
+        {/block:Tags}
+        </div>
+        {/block:HasTags}
+
+        <li><a href="{permalink}">&infin; {lang:Permalink}</a></li>
+        <li><a href="{permalink}">{lang:Posted TimeAgo}</a></li>
+        <li><a href="http://twitter.com/home?status={block:PostSummary}{PostSummary} - {/block:PostSummary}{ShortURL}">{lang:Tweet this}</a></li>
+        {block:NoteCount}
+        <li><a href="{permalink}">{NoteCountWithLabel}</a></li>
+        {/block:NoteCount}
+        {block:IfDisqusUsername}
+        <li><a class="dsq-comment-count" href="{Permalink}#disqus_thread">{lang:Comment}</a></li>
+        {/block:IfDisqusUsername}
+      </ul>
+
+      </div>
+
+    </div>
+
+    {block:PostNotes}
+    <div class="shadow">
+      <div class="lightpanel roundedbottom roundedtop notes">
+      <p>{PostNotes}</p>
+      </div>
+    </div>
+    {/block:PostNotes}
+
+    {/block:Answer}
 
 
 
@@ -744,555 +744,555 @@ $(function() {
 
 
 
-		{block:Photo}
-		<div class="shadow">
-		
+    {block:Photo}
+    <div class="shadow">
 
-			<div class="wholeimage roundedtop">
-			
-				{block:HighRes}
-				<a href="#{PostID}-zoom" class="zoombox zoomoverlay"><img src="http://static.tumblr.com/z7lhmdl/5D6kzy1mm/blank.gif" /></a>
-				{/block:HighRes}
-			
-				<div class="image">
-				{LinkOpenTag}<img class="roundedtop" src="{PhotoURL-500}" alt="{PhotoAlt}" />{LinkCloseTag}
-				</div>
-				
-			</div>
-			
-			{block:Caption}
-			<div class="lightpanel">
-			<div class="caption photocaption">{Caption}</div>
-			</div>
-			{/block:Caption}
-		
-			<div class="bottompanel roundedbottom">
-			
-			<ul class="bottomlist">		
-				{block:RebloggedFrom}
-				<div class="reblogged">
+
+      <div class="wholeimage roundedtop">
+
+        {block:HighRes}
+        <a href="#{PostID}-zoom" class="zoombox zoomoverlay"><img src="http://static.tumblr.com/z7lhmdl/5D6kzy1mm/blank.gif" /></a>
+        {/block:HighRes}
+
+        <div class="image">
+        {LinkOpenTag}<img class="roundedtop" src="{PhotoURL-500}" alt="{PhotoAlt}" />{LinkCloseTag}
+        </div>
+
+      </div>
+
+      {block:Caption}
+      <div class="lightpanel">
+      <div class="caption photocaption">{Caption}</div>
+      </div>
+      {/block:Caption}
+
+      <div class="bottompanel roundedbottom">
+
+      <ul class="bottomlist">
+        {block:RebloggedFrom}
+        <div class="reblogged">
                     {block:RebloggedFromReblog}<li><a href="{ReblogRootURL}">&crarr; {lang:Originally from ReblogRootName}</a></li>{/block:RebloggedFromReblog}
-    				<li><a href="{ReblogParentURL}">&crarr; {lang:Reblogged from ReblogParentName}</a></li>
-				</div>
-				{/block:RebloggedFrom}
-				
-				{block:HasTags}
-				<div class="reblogged">
-				{block:Tags} 
-				<li><a href="{TagURL}">#&nbsp;{Tag}</a></li>
-				{/block:Tags}
-				</div>
-				{/block:HasTags}
-				
-				<li><a href="{permalink}">&infin; {lang:Permalink}</a></li>
-				<li><a href="{permalink}">{lang:Posted TimeAgo}</a></li>
-				<li><a href="http://twitter.com/home?status={block:PostSummary}{PostSummary} - {/block:PostSummary}{ShortURL}">{lang:Tweet this}</a></li>
-				{block:NoteCount}
-				<li><a href="{permalink}">{NoteCountWithLabel}</a></li>
-				{/block:NoteCount}
-				{block:IfDisqusUsername}
-				<li><a class="dsq-comment-count" href="{Permalink}#disqus_thread">{lang:Comment}</a></li>
-				{/block:IfDisqusUsername}
-				
-			</ul>
-			
-		{block:HighRes}
-		<div class="hiddenzoombox">
-			<div id="{PostID}-zoom">
-				<img src="{PhotoURL-HighRes}" class="zoomphoto" />
-			</div>
-		</div>
-		{/block:HighRes}
-			
-			</div>
-		</div>
-		
-		{block:PostNotes} 
-		<div class="shadow">
-			<div class="lightpanel roundedbottom roundedtop notes">
-			<p>{PostNotes}</p>
-			</div>
-		</div>
-		{/block:PostNotes}
-		
-		{/block:Photo}
+            <li><a href="{ReblogParentURL}">&crarr; {lang:Reblogged from ReblogParentName}</a></li>
+        </div>
+        {/block:RebloggedFrom}
 
-		{block:Photoset}
-		<div class="shadow">
-			
-			<div class="image">
-			{Photoset-500}
-			</div>
-		
-			<div class="lightpanel">
-			{block:Caption}
-			<div class="caption">{Caption}</div>
-			{/block:Caption}
-			</div>
-		
-			<div class="bottompanel roundedbottom">
-			
-			<ul class="bottomlist">		
-				{block:RebloggedFrom}
-				<div class="reblogged">
+        {block:HasTags}
+        <div class="reblogged">
+        {block:Tags}
+        <li><a href="{TagURL}">#&nbsp;{Tag}</a></li>
+        {/block:Tags}
+        </div>
+        {/block:HasTags}
+
+        <li><a href="{permalink}">&infin; {lang:Permalink}</a></li>
+        <li><a href="{permalink}">{lang:Posted TimeAgo}</a></li>
+        <li><a href="http://twitter.com/home?status={block:PostSummary}{PostSummary} - {/block:PostSummary}{ShortURL}">{lang:Tweet this}</a></li>
+        {block:NoteCount}
+        <li><a href="{permalink}">{NoteCountWithLabel}</a></li>
+        {/block:NoteCount}
+        {block:IfDisqusUsername}
+        <li><a class="dsq-comment-count" href="{Permalink}#disqus_thread">{lang:Comment}</a></li>
+        {/block:IfDisqusUsername}
+
+      </ul>
+
+    {block:HighRes}
+    <div class="hiddenzoombox">
+      <div id="{PostID}-zoom">
+        <img src="{PhotoURL-HighRes}" class="zoomphoto" />
+      </div>
+    </div>
+    {/block:HighRes}
+
+      </div>
+    </div>
+
+    {block:PostNotes}
+    <div class="shadow">
+      <div class="lightpanel roundedbottom roundedtop notes">
+      <p>{PostNotes}</p>
+      </div>
+    </div>
+    {/block:PostNotes}
+
+    {/block:Photo}
+
+    {block:Photoset}
+    <div class="shadow">
+
+      <div class="image">
+      {Photoset-500}
+      </div>
+
+      <div class="lightpanel">
+      {block:Caption}
+      <div class="caption">{Caption}</div>
+      {/block:Caption}
+      </div>
+
+      <div class="bottompanel roundedbottom">
+
+      <ul class="bottomlist">
+        {block:RebloggedFrom}
+        <div class="reblogged">
                     {block:RebloggedFromReblog}<li><a href="{ReblogRootURL}">&crarr; {lang:Originally from ReblogRootName}</a></li>{/block:RebloggedFromReblog}
-    				<li><a href="{ReblogParentURL}">&crarr; {lang:Reblogged from ReblogParentName}</a></li>
-				</div>
-				{/block:RebloggedFrom}
-				
-				{block:HasTags}
-				<div class="reblogged">
-				{block:Tags} 
-				<li><a href="{TagURL}">#&nbsp;{Tag}</a></li>
-				{/block:Tags}
-				</div>
-				{/block:HasTags}
-				
-				<li><a href="{permalink}">&infin; {lang:Permalink}</a></li>
-				<li><a href="{permalink}">{lang:Posted TimeAgo}</a></li>
-				<li><a href="http://twitter.com/home?status={block:PostSummary}{PostSummary} - {/block:PostSummary}{ShortURL}">{lang:Tweet this}</a></li>
-				{block:NoteCount}
-				<li><a href="{permalink}">{NoteCountWithLabel}</a></li>
-				{/block:NoteCount}
-				{block:IfDisqusUsername}
-				<li><a class="dsq-comment-count" href="{Permalink}#disqus_thread">{lang:Comment}</a></li>
-				{/block:IfDisqusUsername}
-			</ul>
-			
-			</div>
-		</div>
-		
-		{block:PostNotes} 
-		<div class="shadow">
-			<div class="lightpanel roundedbottom roundedtop notes">
-			<p>{PostNotes}</p>
-			</div>
-		</div>
-		{/block:PostNotes}
-		
-		{/block:Photoset}
+            <li><a href="{ReblogParentURL}">&crarr; {lang:Reblogged from ReblogParentName}</a></li>
+        </div>
+        {/block:RebloggedFrom}
 
-		{block:Video}
-		<div class="shadow">
+        {block:HasTags}
+        <div class="reblogged">
+        {block:Tags}
+        <li><a href="{TagURL}">#&nbsp;{Tag}</a></li>
+        {/block:Tags}
+        </div>
+        {/block:HasTags}
 
-			<div class="lightpanel notopborder">
+        <li><a href="{permalink}">&infin; {lang:Permalink}</a></li>
+        <li><a href="{permalink}">{lang:Posted TimeAgo}</a></li>
+        <li><a href="http://twitter.com/home?status={block:PostSummary}{PostSummary} - {/block:PostSummary}{ShortURL}">{lang:Tweet this}</a></li>
+        {block:NoteCount}
+        <li><a href="{permalink}">{NoteCountWithLabel}</a></li>
+        {/block:NoteCount}
+        {block:IfDisqusUsername}
+        <li><a class="dsq-comment-count" href="{Permalink}#disqus_thread">{lang:Comment}</a></li>
+        {/block:IfDisqusUsername}
+      </ul>
 
-			<div class="video">
-			{Video-500}
-			</div>
-			
-			{block:Caption}
-			<div class="caption">{Caption}</div>
-			{/block:Caption}
+      </div>
+    </div>
 
-			</div>
-		
-			<div class="bottompanel roundedbottom">
-			
-			<ul class="bottomlist">		
-				{block:RebloggedFrom}
-				<div class="reblogged">
+    {block:PostNotes}
+    <div class="shadow">
+      <div class="lightpanel roundedbottom roundedtop notes">
+      <p>{PostNotes}</p>
+      </div>
+    </div>
+    {/block:PostNotes}
+
+    {/block:Photoset}
+
+    {block:Video}
+    <div class="shadow">
+
+      <div class="lightpanel notopborder">
+
+      <div class="video">
+      {Video-500}
+      </div>
+
+      {block:Caption}
+      <div class="caption">{Caption}</div>
+      {/block:Caption}
+
+      </div>
+
+      <div class="bottompanel roundedbottom">
+
+      <ul class="bottomlist">
+        {block:RebloggedFrom}
+        <div class="reblogged">
                     {block:RebloggedFromReblog}<li><a href="{ReblogRootURL}">&crarr; {lang:Originally from ReblogRootName}</a></li>{/block:RebloggedFromReblog}
-    				<li><a href="{ReblogParentURL}">&crarr; {lang:Reblogged from ReblogParentName}</a></li>
-				</div>
-				{/block:RebloggedFrom}
-				
-				{block:HasTags}
-				<div class="reblogged">
-				{block:Tags} 
-				<li><a href="{TagURL}">#&nbsp;{Tag}</a></li>
-				{/block:Tags}
-				</div>
-				{/block:HasTags}
-				
-				<li><a href="{permalink}">&infin; {lang:Permalink}</a></li>
-				<li><a href="{permalink}">{lang:Posted TimeAgo}</a></li>
-				<li><a href="http://twitter.com/home?status={block:PostSummary}{PostSummary} - {/block:PostSummary}{ShortURL}">{lang:Tweet this}</a></li>
-				{block:NoteCount}
-				<li><a href="{permalink}">{NoteCountWithLabel}</a></li>
-				{/block:NoteCount}
-				{block:IfDisqusUsername}
-				<li><a class="dsq-comment-count" href="{Permalink}#disqus_thread">{lang:Comment}</a></li>
-				{/block:IfDisqusUsername}
-			</ul>
-			
-			</div>
-			
-		</div>
-		
-		{block:PostNotes} 
-		<div class="shadow">
-			<div class="lightpanel roundedbottom roundedtop notes">
-			<p>{PostNotes}</p>
-			</div>
-		</div>
-		{/block:PostNotes}
+            <li><a href="{ReblogParentURL}">&crarr; {lang:Reblogged from ReblogParentName}</a></li>
+        </div>
+        {/block:RebloggedFrom}
 
-		{/block:Video}
+        {block:HasTags}
+        <div class="reblogged">
+        {block:Tags}
+        <li><a href="{TagURL}">#&nbsp;{Tag}</a></li>
+        {/block:Tags}
+        </div>
+        {/block:HasTags}
 
-		{block:Audio}
-		<div class="shadow">
+        <li><a href="{permalink}">&infin; {lang:Permalink}</a></li>
+        <li><a href="{permalink}">{lang:Posted TimeAgo}</a></li>
+        <li><a href="http://twitter.com/home?status={block:PostSummary}{PostSummary} - {/block:PostSummary}{ShortURL}">{lang:Tweet this}</a></li>
+        {block:NoteCount}
+        <li><a href="{permalink}">{NoteCountWithLabel}</a></li>
+        {/block:NoteCount}
+        {block:IfDisqusUsername}
+        <li><a class="dsq-comment-count" href="{Permalink}#disqus_thread">{lang:Comment}</a></li>
+        {/block:IfDisqusUsername}
+      </ul>
 
-			<div class="lightpanel roundedtop notopborder">
+      </div>
 
-				<div class="audioholder roundedtop">
+    </div>
 
-					<div class="playcount">{lang:Played PlayCount times}</div>
+    {block:PostNotes}
+    <div class="shadow">
+      <div class="lightpanel roundedbottom roundedtop notes">
+      <p>{PostNotes}</p>
+      </div>
+    </div>
+    {/block:PostNotes}
 
-					<div class="audio">{AudioPlayerBlack}</div>
+    {/block:Video}
+
+    {block:Audio}
+    <div class="shadow">
+
+      <div class="lightpanel roundedtop notopborder">
+
+        <div class="audioholder roundedtop">
+
+          <div class="playcount">{lang:Played PlayCount times}</div>
+
+          <div class="audio">{AudioPlayerBlack}</div>
 
 {block:AlbumArt}
 <img class="albumart" src="{AlbumArtURL}" />
 {/block:AlbumArt}
 
-			
-				</div>
-			
-			{block:Caption}
-			{Caption}
-			{/block:Caption}
-			
-			</div>
-		
-			<div class="bottompanel roundedbottom">
-			
-			<ul class="bottomlist">		
-				{block:RebloggedFrom}
-				<div class="reblogged">
-                    {block:RebloggedFromReblog}<li><a href="{ReblogRootURL}">&crarr; {lang:Originally from ReblogRootName}</a></li>{/block:RebloggedFromReblog}
-    				<li><a href="{ReblogParentURL}">&crarr; {lang:Reblogged from ReblogParentName}</a></li>
-				</div>
-				{/block:RebloggedFrom}
-				
-				{block:HasTags}
-				<div class="reblogged">
-				{block:Tags} 
-				<li><a href="{TagURL}">#&nbsp;{Tag}</a></li>
-				{/block:Tags}
-				</div>
-				{/block:HasTags}
-				
-				<li><a href="{permalink}">&infin; {lang:Permalink}</a></li>
-				<li><a href="{permalink}">{lang:Posted TimeAgo}</a></li>
-				<li><a href="http://twitter.com/home?status={block:PostSummary}{PostSummary} - {/block:PostSummary}{ShortURL}">{lang:Tweet this}</a></li>
-				{block:NoteCount}
-				<li><a href="{permalink}">{NoteCountWithLabel}</a></li>
-				{/block:NoteCount}
-				{block:IfDisqusUsername}
-				<li><a class="dsq-comment-count" href="{Permalink}#disqus_thread">{lang:Comment}</a></li>
-				{/block:IfDisqusUsername}
-			</ul>
-			
-			</div>
-			
-		</div>
-		
-		{block:PostNotes} 
-		<div class="shadow">
-			<div class="lightpanel roundedbottom roundedtop notes">
-			<p>{PostNotes}</p>
-			</div>
-		</div>
-		{/block:PostNotes}
-		
-		{/block:Audio}
 
-		{block:Quote}
-		<div class="shadow">			
-			
-			<div class="lightpanel roundedtop quotebg">
-			
-			<h2 class="quote">{Quote}</h2>
-			
-			{block:Source}
-			<div class="quotedescription">
+        </div>
+
+      {block:Caption}
+      {Caption}
+      {/block:Caption}
+
+      </div>
+
+      <div class="bottompanel roundedbottom">
+
+      <ul class="bottomlist">
+        {block:RebloggedFrom}
+        <div class="reblogged">
+                    {block:RebloggedFromReblog}<li><a href="{ReblogRootURL}">&crarr; {lang:Originally from ReblogRootName}</a></li>{/block:RebloggedFromReblog}
+            <li><a href="{ReblogParentURL}">&crarr; {lang:Reblogged from ReblogParentName}</a></li>
+        </div>
+        {/block:RebloggedFrom}
+
+        {block:HasTags}
+        <div class="reblogged">
+        {block:Tags}
+        <li><a href="{TagURL}">#&nbsp;{Tag}</a></li>
+        {/block:Tags}
+        </div>
+        {/block:HasTags}
+
+        <li><a href="{permalink}">&infin; {lang:Permalink}</a></li>
+        <li><a href="{permalink}">{lang:Posted TimeAgo}</a></li>
+        <li><a href="http://twitter.com/home?status={block:PostSummary}{PostSummary} - {/block:PostSummary}{ShortURL}">{lang:Tweet this}</a></li>
+        {block:NoteCount}
+        <li><a href="{permalink}">{NoteCountWithLabel}</a></li>
+        {/block:NoteCount}
+        {block:IfDisqusUsername}
+        <li><a class="dsq-comment-count" href="{Permalink}#disqus_thread">{lang:Comment}</a></li>
+        {/block:IfDisqusUsername}
+      </ul>
+
+      </div>
+
+    </div>
+
+    {block:PostNotes}
+    <div class="shadow">
+      <div class="lightpanel roundedbottom roundedtop notes">
+      <p>{PostNotes}</p>
+      </div>
+    </div>
+    {/block:PostNotes}
+
+    {/block:Audio}
+
+    {block:Quote}
+    <div class="shadow">
+
+      <div class="lightpanel roundedtop quotebg">
+
+      <h2 class="quote">{Quote}</h2>
+
+      {block:Source}
+      <div class="quotedescription">
             <p>{source}</p>
             </div>
-            {/block:Source}                   
-			</div>
-			
-			
-			
-		
-			<div class="bottompanel roundedbottom">
-			
-			<ul class="bottomlist">		
-				{block:RebloggedFrom}
-				<div class="reblogged">
+            {/block:Source}
+      </div>
+
+
+
+
+      <div class="bottompanel roundedbottom">
+
+      <ul class="bottomlist">
+        {block:RebloggedFrom}
+        <div class="reblogged">
                     {block:RebloggedFromReblog}<li><a href="{ReblogRootURL}">&crarr; {lang:Originally from ReblogRootName}</a></li>{/block:RebloggedFromReblog}
-    				<li><a href="{ReblogParentURL}">&crarr; {lang:Reblogged from ReblogParentName}</a></li>
-				</div>
-				{/block:RebloggedFrom}
-				
-				{block:HasTags}
-				<div class="reblogged">
-				{block:Tags} 
-				<li><a href="{TagURL}">#&nbsp;{Tag}</a></li>
-				{/block:Tags}
-				</div>
-				{/block:HasTags}
-				
-				<li><a href="{permalink}">&infin; {lang:Permalink}</a></li>
-				<li><a href="{permalink}">{lang:Posted TimeAgo}</a></li>
-				<li><a href="http://twitter.com/home?status={block:PostSummary}{PostSummary} - {/block:PostSummary}{ShortURL}">{lang:Tweet this}</a></li>
-				{block:NoteCount}
-				<li><a href="{permalink}">{NoteCountWithLabel}</a></li>
-				{/block:NoteCount}
-				{block:IfDisqusUsername}
-				<li><a class="dsq-comment-count" href="{Permalink}#disqus_thread">{lang:Comment}</a></li>
-				{/block:IfDisqusUsername}
-			</ul>
-			
-			</div>
-			
-		</div>
-		
-		{block:PostNotes} 
-		<div class="shadow">
-			<div class="lightpanel roundedbottom roundedtop notes">
-			<p>{PostNotes}</p>
-			</div>
-		</div>
-		{/block:PostNotes}
-		
-		{/block:Quote}
+            <li><a href="{ReblogParentURL}">&crarr; {lang:Reblogged from ReblogParentName}</a></li>
+        </div>
+        {/block:RebloggedFrom}
 
-		{block:Text}		
-		<div class="shadow">
+        {block:HasTags}
+        <div class="reblogged">
+        {block:Tags}
+        <li><a href="{TagURL}">#&nbsp;{Tag}</a></li>
+        {/block:Tags}
+        </div>
+        {/block:HasTags}
 
-			<div class="lightpanel roundedtop">
-			{block:Title}
-			<h2><a href="{Permalink}">{Title}</a></h2>
-			{/block:Title}
-			<div class="textpostbody">
-			{Body}
-			</div>
-			</div>
-		
+        <li><a href="{permalink}">&infin; {lang:Permalink}</a></li>
+        <li><a href="{permalink}">{lang:Posted TimeAgo}</a></li>
+        <li><a href="http://twitter.com/home?status={block:PostSummary}{PostSummary} - {/block:PostSummary}{ShortURL}">{lang:Tweet this}</a></li>
+        {block:NoteCount}
+        <li><a href="{permalink}">{NoteCountWithLabel}</a></li>
+        {/block:NoteCount}
+        {block:IfDisqusUsername}
+        <li><a class="dsq-comment-count" href="{Permalink}#disqus_thread">{lang:Comment}</a></li>
+        {/block:IfDisqusUsername}
+      </ul>
+
+      </div>
+
+    </div>
+
+    {block:PostNotes}
+    <div class="shadow">
+      <div class="lightpanel roundedbottom roundedtop notes">
+      <p>{PostNotes}</p>
+      </div>
+    </div>
+    {/block:PostNotes}
+
+    {/block:Quote}
+
+    {block:Text}
+    <div class="shadow">
+
+      <div class="lightpanel roundedtop">
+      {block:Title}
+      <h2><a href="{Permalink}">{Title}</a></h2>
+      {/block:Title}
+      <div class="textpostbody">
+      {Body}
+      </div>
+      </div>
+
 {block:Date}
-		
-			<div class="bottompanel roundedbottom">
-			
-			<ul class="bottomlist">		
-				{block:RebloggedFrom}
-				<div class="reblogged">
+
+      <div class="bottompanel roundedbottom">
+
+      <ul class="bottomlist">
+        {block:RebloggedFrom}
+        <div class="reblogged">
                     {block:RebloggedFromReblog}<li><a href="{ReblogRootURL}">&crarr; {lang:Originally from ReblogRootName}</a></li>{/block:RebloggedFromReblog}
-    				<li><a href="{ReblogParentURL}">&crarr; {lang:Reblogged from ReblogParentName}</a></li>
-				</div>
-				{/block:RebloggedFrom}
-				
-				{block:HasTags}
-				<div class="reblogged">
-				{block:Tags} 
-				<li><a href="{TagURL}">#&nbsp;{Tag}</a></li>
-				{/block:Tags}
-				</div>
-				{/block:HasTags}
-				
-				<li><a href="{permalink}">&infin; {lang:Permalink}</a></li>
-				<li><a href="{permalink}">{lang:Posted TimeAgo}</a></li>
-				<li><a href="http://twitter.com/home?status={block:PostSummary}{PostSummary} - {/block:PostSummary}{ShortURL}">{lang:Tweet this}</a></li>
-				{block:NoteCount}
-				<li><a href="{permalink}">{NoteCountWithLabel}</a></li>
-				{/block:NoteCount}
-				{block:IfDisqusUsername}
-				<li><a class="dsq-comment-count" href="{Permalink}#disqus_thread">{lang:Comment}</a></li>
-				{/block:IfDisqusUsername}
-			</ul>
-			
-			</div>
-			
-		</div>
-		
-		{block:PostNotes} 
-		<div class="shadow">
-			<div class="lightpanel roundedbottom roundedtop notes">
-			<p>{PostNotes}</p>
-			</div>
-		</div>
-		{/block:PostNotes}
-		
+            <li><a href="{ReblogParentURL}">&crarr; {lang:Reblogged from ReblogParentName}</a></li>
+        </div>
+        {/block:RebloggedFrom}
+
+        {block:HasTags}
+        <div class="reblogged">
+        {block:Tags}
+        <li><a href="{TagURL}">#&nbsp;{Tag}</a></li>
+        {/block:Tags}
+        </div>
+        {/block:HasTags}
+
+        <li><a href="{permalink}">&infin; {lang:Permalink}</a></li>
+        <li><a href="{permalink}">{lang:Posted TimeAgo}</a></li>
+        <li><a href="http://twitter.com/home?status={block:PostSummary}{PostSummary} - {/block:PostSummary}{ShortURL}">{lang:Tweet this}</a></li>
+        {block:NoteCount}
+        <li><a href="{permalink}">{NoteCountWithLabel}</a></li>
+        {/block:NoteCount}
+        {block:IfDisqusUsername}
+        <li><a class="dsq-comment-count" href="{Permalink}#disqus_thread">{lang:Comment}</a></li>
+        {/block:IfDisqusUsername}
+      </ul>
+
+      </div>
+
+    </div>
+
+    {block:PostNotes}
+    <div class="shadow">
+      <div class="lightpanel roundedbottom roundedtop notes">
+      <p>{PostNotes}</p>
+      </div>
+    </div>
+    {/block:PostNotes}
+
 {/block:Date}
-		
-		{/block:Text}
+
+    {/block:Text}
 
 
-		{block:Link}		
-		<div class="shadow">
+    {block:Link}
+    <div class="shadow">
 
-			<div class="lightpanel roundedtop linkbg">
+      <div class="lightpanel roundedtop linkbg">
 
-			<h2><a href="{URL}" class="link" {Target}>{Name}</a></h2>
-			
-			{block:Description}
-			<div class="linkdescription">
+      <h2><a href="{URL}" class="link" {Target}>{Name}</a></h2>
+
+      {block:Description}
+      <div class="linkdescription">
             <p>{Description}</p>
             </div>
-            {/block:Description}                   
-			</div>
-		
-			<div class="bottompanel roundedbottom">
-			
-			<ul class="bottomlist">		
-				{block:RebloggedFrom}
-				<div class="reblogged">
+            {/block:Description}
+      </div>
+
+      <div class="bottompanel roundedbottom">
+
+      <ul class="bottomlist">
+        {block:RebloggedFrom}
+        <div class="reblogged">
                     {block:RebloggedFromReblog}<li><a href="{ReblogRootURL}">&crarr; {lang:Originally from ReblogRootName}</a></li>{/block:RebloggedFromReblog}
-    				<li><a href="{ReblogParentURL}">&crarr; {lang:Reblogged from ReblogParentName}</a></li>
-				</div>
-				{/block:RebloggedFrom}
-				
-				{block:HasTags}
-				<div class="reblogged">
-				{block:Tags} 
-				<li><a href="{TagURL}">#&nbsp;{Tag}</a></li>
-				{/block:Tags}
-				</div>
-				{/block:HasTags}
-				
-				<li><a href="{permalink}">&infin; {lang:Permalink}</a></li>
-				<li><a href="{permalink}">{lang:Posted TimeAgo}</a></li>
-				<li><a href="http://twitter.com/home?status={block:PostSummary}{PostSummary} - {/block:PostSummary}{ShortURL}">{lang:Tweet this}</a></li>
-				{block:NoteCount}
-				<li><a href="{permalink}">{NoteCountWithLabel}</a></li>
-				{/block:NoteCount}
-				{block:IfDisqusUsername}
-				<li><a class="dsq-comment-count" href="{Permalink}#disqus_thread">{lang:Comment}</a></li>
-				{/block:IfDisqusUsername}
-			</ul>
-			
-			</div>
-			
-		</div>
-		
-		{block:PostNotes} 
-		<div class="shadow">
-			<div class="lightpanel roundedbottom roundedtop notes">
-			<p>{PostNotes}</p>
-			</div>
-		</div>
-		{/block:PostNotes}
-		
-		{/block:Link}
-		
-		
-		{block:Chat}		
-		<div class="shadow">
+            <li><a href="{ReblogParentURL}">&crarr; {lang:Reblogged from ReblogParentName}</a></li>
+        </div>
+        {/block:RebloggedFrom}
 
-			<div class="lightpanel roundedtop">
-			{block:Title}
-			<h2><a href="{Permalink}">{Title}</a></h2>
-			{/block:Title}
-			
-				{block:Lines}
+        {block:HasTags}
+        <div class="reblogged">
+        {block:Tags}
+        <li><a href="{TagURL}">#&nbsp;{Tag}</a></li>
+        {/block:Tags}
+        </div>
+        {/block:HasTags}
 
-				<p>
+        <li><a href="{permalink}">&infin; {lang:Permalink}</a></li>
+        <li><a href="{permalink}">{lang:Posted TimeAgo}</a></li>
+        <li><a href="http://twitter.com/home?status={block:PostSummary}{PostSummary} - {/block:PostSummary}{ShortURL}">{lang:Tweet this}</a></li>
+        {block:NoteCount}
+        <li><a href="{permalink}">{NoteCountWithLabel}</a></li>
+        {/block:NoteCount}
+        {block:IfDisqusUsername}
+        <li><a class="dsq-comment-count" href="{Permalink}#disqus_thread">{lang:Comment}</a></li>
+        {/block:IfDisqusUsername}
+      </ul>
+
+      </div>
+
+    </div>
+
+    {block:PostNotes}
+    <div class="shadow">
+      <div class="lightpanel roundedbottom roundedtop notes">
+      <p>{PostNotes}</p>
+      </div>
+    </div>
+    {/block:PostNotes}
+
+    {/block:Link}
+
+
+    {block:Chat}
+    <div class="shadow">
+
+      <div class="lightpanel roundedtop">
+      {block:Title}
+      <h2><a href="{Permalink}">{Title}</a></h2>
+      {/block:Title}
+
+        {block:Lines}
+
+        <p>
                 {block:Label}
                 <span class="label">{Label}</span>
                 {/block:Label}
 
                 {Line}
-				</p>
+        </p>
                 {/block:Lines}
-                            
-			</div>
-		
-			<div class="bottompanel roundedbottom">
-			
-			<ul class="bottomlist">		
-				{block:RebloggedFrom}
-				<div class="reblogged">
-                    {block:RebloggedFromReblog}<li><a href="{ReblogRootURL}">&crarr; {lang:Originally from ReblogRootName}</a></li>{/block:RebloggedFromReblog}
-    				<li><a href="{ReblogParentURL}">&crarr; {lang:Reblogged from ReblogParentName}</a></li>
-				</div>
-				{/block:RebloggedFrom}
-				
-				{block:HasTags}
-				<div class="reblogged">
-				{block:Tags} 
-				<li><a href="{TagURL}">#&nbsp;{Tag}</a></li>
-				{/block:Tags}
-				</div>
-				{/block:HasTags}
-				
-				<li><a href="{permalink}">&infin; {lang:Permalink}</a></li>
-				<li><a href="{permalink}">{lang:Posted TimeAgo}</a></li>
-				<li><a href="http://twitter.com/home?status={block:PostSummary}{PostSummary} - {/block:PostSummary}{ShortURL}">{lang:Tweet this}</a></li>
-				{block:NoteCount}
-				<li><a href="{permalink}">{NoteCountWithLabel}</a></li>
-				{/block:NoteCount}
-				{block:IfDisqusUsername}
-				<li><a class="dsq-comment-count" href="{Permalink}#disqus_thread">{lang:Comment}</a></li>
-				{/block:IfDisqusUsername}
-			</ul>
-			
-			</div>
-			
-		</div>
-		
-		{block:PostNotes} 
-		<div class="shadow">
-			<div class="lightpanel roundedbottom roundedtop notes">
-			<p>{PostNotes}</p>
-			</div>
-		</div>
-		{/block:PostNotes}
-		
-		{/block:Chat}
-		
-		{/block:Posts}
 
-		
-{block:PermalinkPage} 
+      </div>
+
+      <div class="bottompanel roundedbottom">
+
+      <ul class="bottomlist">
+        {block:RebloggedFrom}
+        <div class="reblogged">
+                    {block:RebloggedFromReblog}<li><a href="{ReblogRootURL}">&crarr; {lang:Originally from ReblogRootName}</a></li>{/block:RebloggedFromReblog}
+            <li><a href="{ReblogParentURL}">&crarr; {lang:Reblogged from ReblogParentName}</a></li>
+        </div>
+        {/block:RebloggedFrom}
+
+        {block:HasTags}
+        <div class="reblogged">
+        {block:Tags}
+        <li><a href="{TagURL}">#&nbsp;{Tag}</a></li>
+        {/block:Tags}
+        </div>
+        {/block:HasTags}
+
+        <li><a href="{permalink}">&infin; {lang:Permalink}</a></li>
+        <li><a href="{permalink}">{lang:Posted TimeAgo}</a></li>
+        <li><a href="http://twitter.com/home?status={block:PostSummary}{PostSummary} - {/block:PostSummary}{ShortURL}">{lang:Tweet this}</a></li>
+        {block:NoteCount}
+        <li><a href="{permalink}">{NoteCountWithLabel}</a></li>
+        {/block:NoteCount}
+        {block:IfDisqusUsername}
+        <li><a class="dsq-comment-count" href="{Permalink}#disqus_thread">{lang:Comment}</a></li>
+        {/block:IfDisqusUsername}
+      </ul>
+
+      </div>
+
+    </div>
+
+    {block:PostNotes}
+    <div class="shadow">
+      <div class="lightpanel roundedbottom roundedtop notes">
+      <p>{PostNotes}</p>
+      </div>
+    </div>
+    {/block:PostNotes}
+
+    {/block:Chat}
+
+    {/block:Posts}
+
+
+{block:PermalinkPage}
 {block:IfDisqusUsername}
 
-	<div class="shadow">
-		<div class="lightpanel roundedbottom roundedtop comments">
+  <div class="shadow">
+    <div class="lightpanel roundedbottom roundedtop comments">
 
 <script type="text/javascript">var disqus_url = "{Permalink}"; var disqus_title ="{block:PostTitle}{PostTitle}{/block:PostTitle}";</script>{block:Permalink}<div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Username}/embed.js"></script><noscript><a href="http://disqus.com/forums/{text:Disqus Username}/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">Blog comments powered by <span class="logo-disqus">Disqus</span></a>{/block:Permalink}<script type="text/javascript">
 //<![CDATA[
 (function() {
-	var links = document.getElementsByTagName('a');
-	var query = '?';
-	for(var i = 0; i < links.length; i++) {
-	if(links[i].href.indexOf('#disqus_thread') >= 0) {
-		query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
-	}
-	}
-	document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/{text:Disqus Username}/get_num_replies.js' + query + '"></' + 'script>');
+  var links = document.getElementsByTagName('a');
+  var query = '?';
+  for(var i = 0; i < links.length; i++) {
+  if(links[i].href.indexOf('#disqus_thread') >= 0) {
+    query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+  }
+  }
+  document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/{text:Disqus Username}/get_num_replies.js' + query + '"></' + 'script>');
 })();
 //]]>
 </script>
 
-		</div>
-	</div>
+    </div>
+  </div>
 
 {/block:IfDisqusUsername}
 {/block:PermalinkPage}
-		
-		{block:NoSearchResults}
-		<div class="noresults">Bummer. <br />{lang:No results found}.</div>
-		{/block:NoSearchResults}
-		
-		<div>
-					{block:NextPage}
-					<div class="lightpanel nav roundedtop roundedbottom centeralign shadow next">
-					<a class="nav roundedtop roundedbottom" href="{NextPage}">{lang:Older}</a>
-					</div>
-					{/block:NextPage}
 
-					{block:PreviousPage}
-					<div class="lightpanel nav roundedtop roundedbottom centeralign shadow previous">
-					<a class="nav roundedtop roundedbottom" href="{PreviousPage}">{lang:Newer}</a>
-					</div>
-					{/block:PreviousPage}
-		
-		</div>
-		
+    {block:NoSearchResults}
+    <div class="noresults">Bummer. <br />{lang:No results found}.</div>
+    {/block:NoSearchResults}
 
-	</div>
-	
+    <div>
+          {block:NextPage}
+          <div class="lightpanel nav roundedtop roundedbottom centeralign shadow next">
+          <a class="nav roundedtop roundedbottom" href="{NextPage}">{lang:Older}</a>
+          </div>
+          {/block:NextPage}
 
-	
+          {block:PreviousPage}
+          <div class="lightpanel nav roundedtop roundedbottom centeralign shadow previous">
+          <a class="nav roundedtop roundedbottom" href="{PreviousPage}">{lang:Newer}</a>
+          </div>
+          {/block:PreviousPage}
+
+    </div>
+
+
+  </div>
+
+
+
 </div>
 
 <!-- Twitter feed call is down here so it loads last -->

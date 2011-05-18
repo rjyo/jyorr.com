@@ -121,6 +121,12 @@ input.gsc-input {
   overflow: auto;
 }
 
+.content h3 {
+  font: 15px "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: #333;
+}
+
 /* overwriting default settings */
 
 body {
