@@ -8,7 +8,7 @@
 # echo $CMD
 # `$CMD`
 
-CMD="rsync -r public/ jyo@xuxiaoyu.com:~/jyorr/public/"
+CMD="rsync --exclude '.DS_Store' -r public/ jyo@xuxiaoyu.com:~/jyorr/public/"
 echo $CMD
 `$CMD`
 
