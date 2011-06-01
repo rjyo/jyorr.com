@@ -15,10 +15,10 @@ pre.vim_block {
 .vim_block .Number      { color: #8cd0d3; }
 .vim_block .Special     { color: #d78787; }
 .vim_block .Identifier  { color: #d7afd7; }
+.vim_block .Comment     { color: #7f9f7f; font-style: italic; }
 .vim_block .String,
 .vim_block a,
 .vim_block a:hover      { color: #cc9393; text-decoration: none; }
-.vim_block .Comment     { color: #7f9f7f; font-style: italic; }
 
 
 /* http://almaer.com/scrollbar/debug.html */
@@ -68,6 +68,7 @@ input.gsc-search-button {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   background-color: #EEE;
+  cursor: pointer;
 }
 
 input.gsc-search-button:hover {

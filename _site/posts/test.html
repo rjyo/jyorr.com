@@ -19,6 +19,38 @@
 </ul>
 
 
+<p>hello -!</p>
+
+<div class="highlight"><pre><code class="ruby">    <span class="nb">require</span> <span class="s1">&#39;redcarpet&#39;</span>
+    <span class="n">markdown</span> <span class="o">=</span> <span class="no">Redcarpet</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span>
+    <span class="nb">puts</span> <span class="n">markdown</span><span class="o">.</span><span class="n">to_html</span>
+</code></pre>
+</div>
+
+
+
+
+<div class="highlight"><pre><code class="erlang">    <span class="c">%% sort: sort a list of comparable items.</span>
+    <span class="c">%%</span>
+    <span class="c">%% param: List of items to sort</span>
+    <span class="c">%%</span>
+    <span class="c">%% handle the empty list</span>
+    <span class="n">sort</span><span class="p">([])</span> <span class="o">-&gt;</span>
+        <span class="p">[];</span>
+    <span class="c">%% at least one item in the list</span>
+    <span class="n">sort</span><span class="p">([</span><span class="nv">Pivot</span><span class="p">|</span><span class="nv">Rest</span><span class="p">])</span> <span class="o">-&gt;</span>
+        <span class="c">%% divide: split the list into those less than the Pivot and </span>
+        <span class="c">%%         those greater than (or equal to) the Pivot</span>
+        <span class="nv">Lessthan</span> <span class="o">=</span> <span class="p">[</span><span class="nv">Item</span> <span class="p">||</span> <span class="nv">Item</span> <span class="o">&lt;-</span> <span class="nv">Rest</span><span class="p">,</span> <span class="nv">Item</span> <span class="o">&lt;</span> <span class="nv">Pivot</span><span class="p">],</span>
+        <span class="nv">Morethan</span> <span class="o">=</span> <span class="p">[</span><span class="nv">Item</span> <span class="p">||</span> <span class="nv">Item</span> <span class="o">&lt;-</span> <span class="nv">Rest</span><span class="p">,</span> <span class="nv">Item</span> <span class="o">&gt;=</span> <span class="nv">Pivot</span><span class="p">],</span>
+        <span class="c">%% conquer: recursively call sort on the split parts, and join.</span>
+        <span class="n">sort</span><span class="p">(</span><span class="nv">Lessthan</span><span class="p">)</span> <span class="o">++</span> <span class="p">[</span><span class="nv">Pivot</span><span class="p">]</span> <span class="o">++</span> <span class="n">sort</span><span class="p">(</span><span class="nv">Morethan</span><span class="p">).</span>
+</code></pre>
+</div>
+
+
+
+
 </div>
 
 <div id="related">
