@@ -13,10 +13,13 @@ pre.vim_block {
 .vim_block .Include     { color: #dfaf8f; font-weight: bold; }
 .vim_block .Function    { color: #efef8f; }
 .vim_block .Number      { color: #8cd0d3; }
+.vim_block .Special     { color: #d78787; }
+.vim_block .Identifier  { color: #d7afd7; }
 .vim_block .String,
 .vim_block a,
 .vim_block a:hover      { color: #cc9393; text-decoration: none; }
 .vim_block .Comment     { color: #7f9f7f; font-style: italic; }
+
 
 /* http://almaer.com/scrollbar/debug.html */
 
