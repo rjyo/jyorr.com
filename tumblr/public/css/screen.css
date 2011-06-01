@@ -2,9 +2,10 @@ pre.vim_block {
   font-size: 12px;
   font-family: Menlo, "Andale Mono", "Lucida Console", "Courier New", monospace;
   color: #dcdccc; background-color: #3f3f3f;
+  line-height: 1.3em;
 }
+
 .vim_block .Repeat      { color: #ffd7a7; font-weight: bold; }
-.vim_block .Error       { color: #e37170; background-color: #3d3535; }
 .vim_block .Exception   { color: #c3bf9f; font-weight: bold; }
 .vim_block .Operator    { color: #f0efd0; }
 .vim_block .Conditional { color: #f0dfaf; font-weight: bold; }
@@ -13,12 +14,18 @@ pre.vim_block {
 .vim_block .Include     { color: #dfaf8f; font-weight: bold; }
 .vim_block .Function    { color: #efef8f; }
 .vim_block .Number      { color: #8cd0d3; }
-.vim_block .Special     { color: #d78787; }
-.vim_block .Identifier  { color: #d7afd7; }
+.vim_block .String      { color: #cc9393; }
 .vim_block .Comment     { color: #7f9f7f; font-style: italic; }
+.vim_block .Error       { color: #e37170; }
+.vim_block .Identifier  { color: #ffd7af; font-weight: bold; }
+
 .vim_block .String,
 .vim_block a,
-.vim_block a:hover      { color: #cc9393; text-decoration: none; }
+.vim_block a:hover      {
+  color: #cc9393 !important;
+  text-decoration: none !important;
+  border: 0 !important;
+}
 
 
 /* http://almaer.com/scrollbar/debug.html */
@@ -116,12 +123,11 @@ input.gsc-input {
   margin-top: 1.5em;
 }
 
-.content pre {
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
+pre.vim_block {
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
   padding: 8px;
-  width: 468px;
   overflow: auto;
 }
 
@@ -135,14 +141,20 @@ input.gsc-input {
 
 body {
   font-size: 12px;
+  /* font: 11px "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;*/
 }
 
 .post .content {
   padding-right: 20px;
 }
 
-.content img {
+.post img {
   border-radius: 3px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
 }
+
+.post.full.link pre.vim_block {
+  width: 470px;
+}
+
