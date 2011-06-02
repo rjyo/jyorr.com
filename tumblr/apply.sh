@@ -8,7 +8,7 @@
 # echo $CMD
 # `$CMD`
 
-CMD="rsync --chmod=a+r --exclude='.DS_Store' -r public/ jyo@xuxiaoyu.com:~/jyorr/public/"
+CMD="rsync --chmod=a+r --exclude='.DS_Store' -r `dirname $0`/public/ jyo@xuxiaoyu.com:~/jyorr/public/"
 echo $CMD
 `$CMD`
 
