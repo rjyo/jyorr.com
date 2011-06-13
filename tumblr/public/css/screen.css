@@ -181,3 +181,8 @@ p.attribution span {
   background-color: white;
   opacity: 0.8;
 }
+
+#page .link h2,
+#page .text h2 {
+  font-family: "Play", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, Tahoma, sans-serif;
+}
